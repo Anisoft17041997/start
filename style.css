@@ -1,0 +1,66 @@
+.imgpos{
+  width: 70px;
+  height: 70px;
+}
+
+.boutton{
+  margin-top: 15px;
+}
+.persoModal{
+	color: black;
+}
+
+.misenpage{
+    margin-top: -120px;
+}
+
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
+.profil{
+	margin: 20px;
+
+}
+.part{
+	background-color: gray;
+	height: 50px;
+
+}
+
+.part1{
+	background-color: blue;
+	height: 50px;
+}
+
+.part2{
+	background-color: yellow;
+	height: 50px;
+}
+
+.part3{
+	background-color: orange;
+	height: 50px;
+}
+
+@media (max-width: @screen-xs) {
+    body{font-size: 10px;}
+}
+
+@media (max-width: @screen-sm) {
+    body{font-size: 14px;}
+}
+
+
+h4{
+    font-size: 0.7em;
+} 
