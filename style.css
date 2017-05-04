@@ -6,6 +6,7 @@
 .boutton{
   margin-top: 15px;
 }
+
 .persoModal{
 	color: black;
 }
@@ -52,15 +53,9 @@
 	height: 50px;
 }
 
-@media (max-width: @screen-xs) {
-    body{font-size: 10px;}
-}
-
-@media (max-width: @screen-sm) {
-    body{font-size: 14px;}
-}
 
 
 h4{
     font-size: 0.7em;
+    text-transform: none !important;
 } 

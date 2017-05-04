@@ -31,8 +31,7 @@
  		function set_flash($msg, $type = 'info'){
  			$_SESSION['notification']['msg'] = $msg;
  			$_SESSION['notification']['type'] = $type;
- 		}
- 		
+ 		} 		
  	}
 
  	if(!function_exists('secure')){
@@ -80,6 +79,7 @@
      	}
 		
     }
+
     if(!function_exists('get_session')){
      	function get_session($key){
 
@@ -108,9 +108,7 @@
     }
 
 	if(!function_exists('get_avatar_url')){
-     	function get_avatar_url($email){
-     		
-
+     	function get_avatar_url($email){   		
      		return "http://gravatar.com/avatar/".md5(strtolower(trim(email)));
      	}
 		
@@ -134,11 +132,10 @@
 
             $user = $q->fetch();
 
-            if($user['quartier'] == null){
+            if(mb_strlen($user['quartier']) == 0){
                 return false;
             }
 
             return true;
-        }
-        
+        }        
     }   

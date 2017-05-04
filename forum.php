@@ -3,11 +3,11 @@
 	session_start();
 	require 'includes/fonctions.php'
 ?>
+
 <html>
   <head>
 	<title>MIZANMIKE - Forum</title>
-	<link rel="icon" href="img/favicon.gif">
-	
+	<link rel="icon" href="img/favicon.gif">	
   </head>
   <body>
 		<?php include 'partials/_header.php';?>

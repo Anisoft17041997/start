@@ -1,5 +1,5 @@
 @import url(font-awesome.min.css);
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
+/*@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");*/
 
 /*
 	Phantom by HTML5 UP
@@ -1720,11 +1720,10 @@
 		}
 
 	h2, h3, h4, h5, h6 {
-		font-weight: 900;
 		line-height: 1.5;
 		margin: 0 0 2em 0;
-		text-transform: uppercase;
 		letter-spacing: 0.35em;
+		text-transform: none;
 	}
 
 		h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -2071,11 +2070,6 @@
 		}
 
 /* Form */
-
-	form {
-		margin: -1em 0 2em 0;
-	}
-
 		form:after {
 			content: '';
 			display: block;

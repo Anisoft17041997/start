@@ -3,26 +3,27 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 				<!-- Header -->
-					<?php include 'partials/_nav.php'; ?>
+				<?php include 'partials/_nav.php'; ?>
 				<div class="container">
 					<!-- Menu -->
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
 							<li><a href="forum.php">Forum</a></li>
-							<li><a href="#">News</a></li>
+							<li><a href="new.php">News</a></li>
 						</ul>
 					</nav>
 				<!-- Main -->
 					<div id="main">
 						<div class="">
-							<h4 class="align-center">Plus un seul dechet plastique dans la nature</h4>
+							<h4 class="align-center" style="margin-bottom:30px;">Plus un seul dechet plastique dans la nature</h4>
 							<span class="image main"><img src="img/2.png" alt="" /></span>                                 
                         </div>
 					</div>
 				</div>
 
 		<?php include 'views/login.view.php'; ?>
+		
     	<!-- Modal creation de profil -->
          <div class="container">
         	<div class="row col-sm-5">
@@ -33,6 +34,7 @@
 				<div class="modal fade" id="myModal2" role="dialog">
 					<div class="modal-dialog">
 						<!-- Modal content-->
+						<form method="post" data-parsley-validate autocomplete="off">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title">
@@ -41,7 +43,6 @@
 							</div>
 							<div class="modal-body">
 								<?php include 'partials/_error.php'; ?>
-								<form method="post" data-parsley-validate autocomplete="off">
 									<div class="form-group">
 										<label for="pseudo">Pseudo <span class="text-danger">*</span></label>
 										<input name="pseudo" type="text" class="form-control" id="email" placeholder="Nom d'utilisateur" required="required" data-parsley-minlength="5">
@@ -62,17 +63,17 @@
 										<label for="tel">Téléphone <span class="text-danger">*</span></label>
 										<input name="tel" type="tel" class="form-control" id="tel" placeholder="Téléphone" required="required" data-parsley-type="number">
 									</div>
-									<div class="form-group col-sm-5 col-xs-5">
-										<button type="submit" class="btn btn-primary" name="submit">Soumettre</button>
-									</div>
-									<div class="pull-right">
-										<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
-									</div>
-								</form>
 							</div>
 							<div class="modal-footer">
+								<div class="form-group col-sm-4 col-xs-4">
+									<button type="submit" class="btn btn-primary" name="submit">Soumettre</button>
+								</div>
+								<div class="pull-right">
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+								</div>
 							</div>									
 						</div>
+						</form>
 					</div>
 				</div><!-- Modal -->
         	</div>
