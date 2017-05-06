@@ -1,8 +1,9 @@
 
-<?php
-	session_start();
-	require 'includes/fonctions.php'
-?>
+	<?php
+		session_start();
+		require 'includes/fonctions.php';
+		require 'config/database.php';
+	?>
 
 <html>
   <head>
@@ -57,13 +58,25 @@
 					  mysql_select_db ('scope', $base) ; 
 					 
 					  // préparation de la requete
-					  $q = $db->prepare("SELECT pseudo FROM users WHERE id = ?");
-					  $tmp = 'forum_sujets.id_user';
-					  $q->execute(array($tmp));
+					  // $q = $db->prepare("SELECT ID, titre, datePost FROM forum_sujets ORDER BY datePost DESC");
+					  $q = $db->prepare(
+					  		"SELECT pseudo, email, telephone 
+					  		FROM users 
+							INNER JOIN forum_sujets
+							ON forum_sujets.id_user = users.id"
+						);
 
-					  $user = $q->fetch();
-					  $pseudo = $user->pseudo; 
-					 
+					  $q->execute();
+					  $rep = $q->fetchAll(PDO::FETCH_OBJ);
+					  // $rep = $q->fetchAll();
+					  print_debug($rep);
+					  // echo $rep[0]->pseudo.'<br>';
+					  foreach ($rep as $r) {
+					  	echo  $r->pseudo.' '.$r->email.'<br>';
+					  }
+					  
+					   // $user = $q->fetch();
+					   // $pseudo = $user['pseudo']; 
 					  $sql = 'SELECT ID, titre, datePost FROM forum_sujets ORDER BY datePost DESC';
 
 					  // on lance la requête (mysql_query) et on impose un message d'erreur si la requête ne se passe pas bien (or die)
@@ -91,13 +104,13 @@
 						DATE
 						</td></tr>
 						<?php
-						// on va scanner tous les tuples un par un
-						$data['pseudo'] = $pseudo;
-						
+						// // on va scanner tous les tuples un par un
+						// $data['pseudo'] = $pseudo['pseudo'];
+						// var_dump($data);
 						while ($data = mysql_fetch_array($req)) 
 						{
 							
-					 
+					 			
 								// on décompose la date
 								sscanf($data['datePost'], "%4s-%2s-%2s %2s:%2s:%2s", $annee, $mois, $jour, $heure, $minute, $seconde);
 							 
@@ -106,8 +119,8 @@
 								echo '<td>';
 							 
 								// on affiche le nom de l'auteur de sujet
-								echo htmlentities(trim($data['pseudo']));
-								echo '</td><td>';
+								//echo htmlentities(trim($data['pseudo']));
+								echo '</td>'.$data['pseudo'].'<td>';
 							 
 								// on affiche le titre du sujet, et sur ce sujet, on insère le lien qui nous	permettra de lire les différentes réponses de ce sujet
 								echo '<a href="lire_sujet.php?id_sujet_a_lire=' , $data['ID'] , '">' , htmlentities(trim($data['titre'])) , '</a>';
@@ -128,7 +141,33 @@
 					  mysql_close ();
 				  ?>				  	
 				 	</div>
-				 	<a href="views/forum.view.php">Forum</a>
+				</div>
+
+				<div class="container">
+					<div class="">
+						<div class="row h-forum">
+							<div class="col-md-8 col-xs-8">Sujets actifs</div>
+							<div class="col-md-4 col-xs-4">Derniers sujets</div>
+						</div>
+						<div class="b-forum">
+							<div class="row">
+								<div class="col-md-8 col-xs-8"><a href="">Good topic</a> <br>by Gramziu » 01 Oct 2015, 17:38</div>
+								<div class="col-md-4 col-xs-4">Last post <br> by KamziuUser avatar 07 Dec 2015, 21:06 </div>
+							</div><hr>
+							<div class="row">
+								<div class="col-md-8 col-xs-8">Good topic <br>by Gramziu » 01 Oct 2015, 17:38</div>
+								<div class="col-md-4 col-xs-4">Last post <br>by KamziuUser avatar 07 Dec 2015, 21:06 </div>
+							</div><hr>
+							<div class="row">
+								<div class="col-md-8 col-xs-8">Good topic <br>by Gramziu » 01 Oct 2015, 17:38</div>
+								<div class="col-md-4 col-xs-4">Last post <br>by KamziuUser avatar 07 Dec 2015, 21:06 </div>
+							</div><hr>
+							<div class="row">
+								<div class="col-md-8 col-xs-8">Good topic <br>by Gramziu » 01 Oct 2015, 17:38</div>
+								<div class="col-md-4 col-xs-4">Last post <br>by KamziuUser avatar 07 Dec 2015, 21:06 </div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<!-- Footer -->
 					<footer id="footer">
@@ -166,9 +205,6 @@
 					</footer>
 
 			</div>        
-
-        <!-- Map Section -->
-
       
 
         <?php include 'partials/_footer.php'; ?>

@@ -1,5 +1,5 @@
 <?php include 'partials/_header.php';?>
-	<body id="phpbb" class="nojs notouch section-viewforum ltr">
+	<body id="phpbb" class="">
 		<!-- Wrapper -->
 			<div id="wrapper">
 				<!-- Header -->
@@ -41,15 +41,15 @@
 									<li class="font-icon icon-search-active"><a href="searchb2d6.html?style=2&amp;search_id=active_topics" role="menuitem"><i class="fa fa-fire"></i>Active topics</a></li>
 								<li class="separator site-menu"></li>
 								<li data-skip-responsive="true" class="site-menu"><a href="faq655a.html?style=2" rel="help" title="Frequently Asked Questions">FAQ</a></li>
-<li class="site-menu">
-	<a href="#" title="Example">Drop Down</a>
-	<ul>
-		<li><a href="#">Lorem ipsum</a></li>
-		<li><a href="#">Welcome to phpBB3</a></li>
-		<li><a href="#">Frequently Asked Questions</a></li>
-		<li><a href="#">BBCode example</a></li>
-	</ul>
-</li>
+					<li class="site-menu">
+						<a href="#" title="Example">Drop Down</a>
+						<ul>
+							<li><a href="#">Lorem ipsum</a></li>
+							<li><a href="#">Welcome to phpBB3</a></li>
+							<li><a href="#">Frequently Asked Questions</a></li>
+							<li><a href="#">BBCode example</a></li>
+						</ul>
+					</li>
 
 															</ul>
 						</div>

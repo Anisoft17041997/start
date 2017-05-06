@@ -4,19 +4,31 @@
   		<title>MIZANMIKE - Profil</title>
   		<meta charset="utf-8" />        
       <link rel="icon" href="img/android-contact.png">
-  		<meta name="viewport" content="width=device-width, initial-scale=1" />
+  	  <meta name="viewport" content="width=device-width, initial-scale=1" />
   		
       <link rel="stylesheet" href="assets/css/main.css" />
-  		<link rel="stylesheet" href="css/main.css" />
+  	  <link rel="stylesheet" href="css/main.css" />
       <link rel="stylesheet" href="style.css">
-          
+      
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+
       <!-- Bootstrap -->
       <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
       <link rel="stylesheet"  href="bootstrap/css/bootstrap-theme.min.css">
       <!-- Parsley validator -->
-      <link rel="stylesheet" type="text/css" href="css/parsley.css">   
+      <link rel="stylesheet" type="text/css" href="css/parsley.css">  
+      <style>
+            #mapid{
+                width: 100%;
+                height: 300px;
+            }
+        </style> 
   	</head>
   	<body>
+
   				  <!-- Header -->
 			<header id="header">
 				<div class="container">
@@ -46,6 +58,7 @@
         
     <!-- Modal pour profil -->
      <div class="container">
+        
          <!-- Panels -->
         <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
             <div class="row">
@@ -114,14 +127,59 @@
                 <div class="panel panel-primary">
                   <div class="panel-heading">Map interactive</div>
                   <div class="panel-body">
-                    <div id="mapid" class=""></div>
+                    <div id="mapid"></div>
                   </div>
                 </div>                          
               </div> 
           </div>  
         <?php endif; ?>     
           <!-- Footer -->        
+        <script>
 
+          $(function(){
+              if("geolocation" in navigator){
+                  navigator.geolocation.getCurrentPosition(function(position){
+                      console.log(position);
+                      var pos = {};
+                      pos.lat = position.coords.latitude;
+                      pos.lon = position.coords.longitude;
+                      console.log(pos);
+                      dibujarMmapa(pos);
+                      obtenerDireccion(pos);
+                  });
+              }else{
+                  alert('Votre navigateur ne supporte pas la geolocation !!');
+              }
+          });
+
+         
+          var dibujarMmapa =  function(pos){
+              var map = L.map('mapid').setView([pos.lat, pos.lon], 16);
+                L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {foo: 'bar'}).addTo(map);
+            
+                  // L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                  //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+                  //     subdomains: 'abcd',
+                  //     maxZoom: 18,
+                  // }).addTo(map);
+                  
+                var marker = L.marker([pos.lat, pos.lon]).addTo(map).bindPopup("<img src='img/avatar.png'>", {minWidth: 80}).openPopup();
+
+                var info = "<a href='#' style='text-decoration:none;'><img style='width:100%' src='img/scope.png' /><br>&nbsp;&nbsp;<b style='margin-left:18px;'>Woelab<br><i>Banque plastique N°1</i></b></a>";  
+
+                var infob = "<a href='#' style='text-decoration:none;'><img style='width:100%' src='img/scope.png' /><br>&nbsp;&nbsp;<b>Woelab prime<br><i>Banque plastique N°2</i></b></a>";    
+                var marker1 = L.marker([6.163909, 1.208513]).addTo(map).bindPopup(info);
+                var marker2 = L.marker([6.214580, 1.136198]).addTo(map).bindPopup(infob);
+
+            // var marker1 = L.marker([6.06648, 1.23047]).addTo(map).bindPopup(info, {minWidth: 80}).openPopup();
+            // var marker2 = L.marker([6.1129, 1.09863]).addTo(map).bindPopup(infob, {minWidth: 80});  
+
+
+          }
+
+             
+
+        </script>
           <!-- jQuery -->
           <script src="vendor/jquery/jquery.js"></script>
 
@@ -144,51 +202,7 @@
         <script type="text/javascript" src="js/parsley.min.js"></script>
         <script type="text/javascript" src="js/fr.js"></script>
         
-        <script>
-
-          $(function(){
-              if("geolocation" in navigator){
-                  navigator.geolocation.getCurrentPosition(function(position){
-                      console.log(position);
-                      var pos = {};
-                      pos.lat = position.coords.latitude;
-                      pos.lon = position.coords.longitude;
-                      console.log(pos);
-                      dibujarMmapa(pos);
-                      obtenerDireccion(pos);
-                  });
-              }else{
-                  alert('no soportado');
-              }
-          });
-
-         
-          var dibujarMmapa =  function(pos){
-          var myMap = L.map('mapid').setView([pos.lat, pos.lon], 16);
-
-              L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-                  subdomains: 'abcd',
-                  maxZoom: 18,
-              }).addTo(myMap);
-              
-              var marker = L.marker([pos.lat, pos.lon]).addTo(myMap);
-
-          }
-
-          var obtenerDireccion = function(pos){
-              $.ajax({
-                  method:'GET',
-                  url:"https://www.geocode.farm/v3/json/reverse/?lat="+pos.lat+"&lon="+pos.lon,
-                  success:function(data){
-                      var dir = data.geocoding_results.RESULTS[0].formatted_address;
-                      var msg = "<h1>"+dir+"</h1>";
-                      $('#direccion').append(msg);
-                  }
-              });
-          }
-          L.control.locate().addTo(map);
-        </script>
+        
         <!-- Localisation -->
          <!-- <iframe width="100%" height="300px" frameBorder="0" src="https://framacarte.org/fr/map/carte-scope_9435?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="https://framacarte.org/fr/map/carte-scope_9435">Voir en plein écran</a></p> -->
     </body>

@@ -139,3 +139,20 @@
             return true;
         }        
     }   
+
+    //Aide pour developpeur
+    if(!function_exists('var_debug')){
+        function var_debug(){
+            echo '<pre>';
+            var_dump($monVar);
+            echo '</pre>'; 
+        }        
+    }
+    
+    if(!function_exists('print_debug')){
+        function print_debug($monVar){
+            echo '<pre>';
+            print_r($monVar);
+            echo '</pre>'; 
+        }        
+    }
