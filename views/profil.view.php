@@ -62,23 +62,23 @@
          <!-- Panels -->
         <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-xs-6">
                   <div class="panel panel-primary">
                     <div class="panel-heading">Profil de <?= $user->pseudo ?></div>
                     <div class="panel-body">
                       <?php $gravatar_url = "http://gravatar.com/avatar/".md5(strtolower(trim($user->email))); ?>
                       <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-xs-5">
                           <a href="" ><img src="img/avatar.png" title="Changer de photo de profil" alt="Image de profil de <?= $user->pseudo ?>" class="img-circle" style=""></a>
                         </div>
                        <!--  <div class="row col-md-6">
                           <strong><?= $user->pseudo ?><br></strong>
                           <a href="mailto:<?= $user->email ?>"><?= $user->email ?></a>
                         </div> -->
-                        <div class="col-md-6">
+                        <div class="col-xs-6">
                           <ul class="list-group">
-                              <li class="list-group-item"><b>Pseudo: </b><?= $user->pseudo ?></li>
-                              <li class="list-group-item"><b>Email: </b><a href="mailto:<?= $user->email ?>"><?= $user->email ?></a></li>
+                              <li class="list-group-item"><b>Pseudo : </b><?= $user->pseudo ?></li>
+                              <li class="list-group-item"><b>Email : </b><a href="mailto:<?= $user->email ?>"><?= $user->email ?></a></li>
                           </ul>
                         </div>
                       </div>
@@ -88,7 +88,7 @@
               <?php  require 'includes/fonctions.php'; ?>
               <?php include 'devenirUser.php'; ?>
               <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
-                <div class="col-md-6">
+                <div class="col-xs-6">
                   <div class="panel panel-primary">
                     <div class="panel-heading">Completer mon profil</div>
                     <div class="panel-body">
@@ -102,7 +102,7 @@
         <div class="row">
               <div class="col-md-6 col-xs-12">
                 <div class="panel panel-primary">
-                  <div class="panel-heading">Profil de <?= $user->pseudo ?></div>
+                  <div class="panel-heading">Profil de <strong><?= $user->pseudo ?></strong></div>
                   <div class="panel-body">
                     <?php $gravatar_url = "http://gravatar.com/avatar/".md5(strtolower(trim($user->email))); ?>
                     <div class="row">
@@ -113,11 +113,15 @@
                         <strong><?= $user->pseudo ?><br></strong>
                         <a href="mailto:<?= $user->email ?>"><?= $user->email ?></a>
                       </div> -->
-                      <div class="col-md-6">
+                      <div class="col-xs-6">
                         <ul class="list-group">
-                            <li class="list-group-item"><b>Pseudo: </b><?= $user->pseudo ?></li>
-                            <li class="list-group-item"><b>Email: </b><a href="mailto:<?= $user->email ?>"><?= $user->email ?></a></li>
+                            <li class="list-group-item"><b>Pseudo : </b><?= $user->pseudo ?></li>
+                            <li class="list-group-item"><b>Email : </b><a href="mailto:<?= $user->email ?>"><?= $user->email ?></a></li>
+                            <li class="list-group-item"><b>Téléphone : </b><?= $user->telephone ?></li>
+                            <li class="list-group-item"><b>Quartier : </b><?= $user->quartier ?></li>
                         </ul>
+                        <hr>
+                        <a href="#" data-toggle="modal" data-target="#myModal">Changer de profil</a>
                       </div>
                     </div>
                   </div>
@@ -125,7 +129,7 @@
               </div>                     
               <div class="col-md-6 col-xs-12">
                 <div class="panel panel-primary">
-                  <div class="panel-heading">Map interactive</div>
+                  <div class="panel-heading">Géolocalisation</div>
                   <div class="panel-body">
                     <div id="mapid"></div>
                   </div>
@@ -172,12 +176,8 @@
                 var marker2 = L.marker([6.214580, 1.136198]).addTo(map).bindPopup(infob);
 
             // var marker1 = L.marker([6.06648, 1.23047]).addTo(map).bindPopup(info, {minWidth: 80}).openPopup();
-            // var marker2 = L.marker([6.1129, 1.09863]).addTo(map).bindPopup(infob, {minWidth: 80});  
-
-
-          }
-
-             
+            // var marker2 = L.marker([6.1129, 1.09863]).addTo(map).bindPopup(infob, {minWidth: 80}); 
+          }             
 
         </script>
           <!-- jQuery -->
