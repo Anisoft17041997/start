@@ -1,0 +1,10 @@
+- developper une solution de poubelle urbaine
+- trouver une system d'info mobile
+- 1.20x80 : un back
+- collecte en tri selectif
+- Trouver des stagiaires pour dynamiser la startup
+- revoir l'inscription : 
+- appli pour diagnostiquer la poubele, 
+- syteme de code qr pour gerer les poubelles
+
+ 

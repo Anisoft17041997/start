@@ -38,6 +38,7 @@
 						<ul>
 							<li><a href="forum.php">Forum</a></li>
 							<li><a href="#">News</a></li>
+							<li><a href="#">Jouer</a></li>
 						</ul>
 					</nav>
 				</div>

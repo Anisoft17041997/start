@@ -52,30 +52,30 @@
 				<h2>Menu</h2>
 				<ul>
 					<li><a href="forum.php">Forum</a></li>
-					<li><a href="#">News</a></li>
+          <li><a href="#">News</a></li>
+					<li><a href="#">Jouer</a></li>
         </ul>
       </nav>
         
     <!-- Modal pour profil -->
-     <div class="container">
-        
+     <div class="container">        
          <!-- Panels -->
         <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-md-6 col-xs-12">
                   <div class="panel panel-primary">
                     <div class="panel-heading">Profil de <?= $user->pseudo ?></div>
                     <div class="panel-body">
                       <?php $gravatar_url = "http://gravatar.com/avatar/".md5(strtolower(trim($user->email))); ?>
                       <div class="row">
-                        <div class="col-xs-5">
-                          <a href="" ><img src="img/avatar.png" title="Changer de photo de profil" alt="Image de profil de <?= $user->pseudo ?>" class="img-circle" style=""></a>
+                        <div class="col-xs-2">
+                          <a href="" ><img src="img/avatar.png" title="Changer de photo de profil" alt="Image de profil de <?= $user->pseudo ?>" class="img-circle img-responsive"></a>
                         </div>
                        <!--  <div class="row col-md-6">
                           <strong><?= $user->pseudo ?><br></strong>
                           <a href="mailto:<?= $user->email ?>"><?= $user->email ?></a>
                         </div> -->
-                        <div class="col-xs-6">
+                        <div class="col-xs-10">
                           <ul class="list-group">
                               <li class="list-group-item"><b>Pseudo : </b><?= $user->pseudo ?></li>
                               <li class="list-group-item"><b>Email : </b><a href="mailto:<?= $user->email ?>"><?= $user->email ?></a></li>
@@ -86,9 +86,10 @@
                   </div>
                 </div>
               <?php  require 'includes/fonctions.php'; ?>
-              <?php include 'devenirUser.php'; ?>
+
+              <div class="col-md-3"><?php include 'devenirUser.php';?></div>
               <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
-                <div class="col-xs-6">
+                <div class="col-md-6 col-xs-12">
                   <div class="panel panel-primary">
                     <div class="panel-heading">Completer mon profil</div>
                     <div class="panel-body">
@@ -113,17 +114,22 @@
                         <strong><?= $user->pseudo ?><br></strong>
                         <a href="mailto:<?= $user->email ?>"><?= $user->email ?></a>
                       </div> -->
-                      <div class="col-xs-6">
+                      <div class="col-xs-8 col-md-6">
                         <ul class="list-group">
                             <li class="list-group-item"><b>Pseudo : </b><?= $user->pseudo ?></li>
                             <li class="list-group-item"><b>Email : </b><a href="mailto:<?= $user->email ?>"><?= $user->email ?></a></li>
                             <li class="list-group-item"><b>Téléphone : </b><?= $user->telephone ?></li>
                             <li class="list-group-item"><b>Quartier : </b><?= $user->quartier ?></li>
-                        </ul>
-                        <hr>
-                        <a href="#" data-toggle="modal" data-target="#myModal">Changer de profil</a>
+                        </ul>                        
+                        <!-- <a href="#" data-toggle="modal" data-target="#myModal">Modifier mon profil</a> -->
                       </div>
                     </div>
+                      <div class="">
+                        <ul class="list-group">
+                          <li class="list-group-item">Nombre de kits remplits : <span class="badge">12</span></li>
+                          <li class="list-group-item">Type de déchets produit : <span class="badge">Plastiques</span></li> 
+                        </ul>
+                      </div>
                   </div>
                 </div>
               </div>                     

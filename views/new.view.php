@@ -1,5 +1,37 @@
 <?php include 'partials/_header.php';?>
 	<body id="phpbb" class="">
+		<div class="row">
+			  <div class="col-md-2">
+			    <div class="thumbnail">
+			      <a href="#">
+			        <img src="img/woelab.jpg" alt="Lights" style="width:20%">
+			        <div class="caption">
+			          <p>Lorem ipsum...</p>
+			        </div>
+			      </a>
+			    </div>
+			  </div>
+			  <div class="col-md-2">
+			    <div class="thumbnail">
+			      <a href="#">
+			        <img src="img/woelab.jpg" alt="Nature" style="width:20%">
+			        <div class="caption">
+			          <p>Lorem ipsum...</p>
+			        </div>
+			      </a>
+			    </div>
+			  </div>
+			  <div class="col-md-2">
+			    <div class="thumbnail">
+			      <a href="#">
+			        <img src="img/woelab.jpg" alt="Fjords" style="width:20%">
+			        <div class="caption">
+			          <p>Lorem ipsum...</p>
+			        </div>
+			      </a>
+			    </div>
+			  </div>
+		</div>
 		<!-- Wrapper -->
 			<div id="wrapper">
 				<!-- Header -->

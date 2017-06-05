@@ -19,5 +19,11 @@
         <!-- Template forum -->
         <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
 		<link rel="stylesheet" type="text/css" href="../css/colours6148.css">
-		<link rel="stylesheet" type="text/css" href="../css/stylesheet6148.css">       
+		<link rel="stylesheet" type="text/css" href="../css/stylesheet6148.css"> 
+		<style>
+            #mapid{
+                width: 100%;
+                height: 100%;
+            }
+        </style>      
 	</head>
