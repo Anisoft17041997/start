@@ -31,11 +31,12 @@
             nom = ?, 
             prenom = ?, 
             quartier = ?, 
-            sexe = ?
+            sexe = ?,
+            isUser = ?
             WHERE id = ?'
         );
 
-        $req->execute(array($nom, $prenom, $quartier, $sexe, $_SESSION['id']));
+        $req->execute(array($nom, $prenom, $quartier, $sexe, 1, $_SESSION['id']));
 
      }else{
         $errors[] = "Veuillez renseigner tous les champs";

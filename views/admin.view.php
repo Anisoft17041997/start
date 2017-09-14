@@ -95,6 +95,34 @@
                   </table>
                 </div>
               </div>
+
+              <!-- liste des abonnés -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Liste des abonnés</h3>
+                </div>
+                <div class="panel-body">
+                  <table class="table table-striped table-hover">
+                    <tr>
+                      <th>Pseudo</th>
+                      <th>Email</th>
+                      <th>Téléphone</th>
+                      <th class="text-center">CRUD</th>
+                    </tr>
+                    <?php while ($data = $query->fetch()) { ?>
+                    <tr>
+                      <td><?=$data['pseudo'] ?></td>
+                      <td><?=$data['email'] ?></td>
+                      <td><?=$data['telephone'] ?></td>
+                      <td>
+                        <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>
+                        <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
+                      </td>
+                    </tr>
+                    <?php }?>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
