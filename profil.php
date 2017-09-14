@@ -4,9 +4,10 @@
     require 'config/database.php';
     require 'includes/fonctions.php';
 
+
     if(!empty($_GET['id']) && $_GET['id'] >0 ){
       $getid = intval($_GET['id']);
-      $q = $db->prepare("SELECT * FROM users WHERE id = ?");
+      $q = $db->prepare("SELECT * FROM utilisateur WHERE id = ?");
       $q->execute(array($getid));
       $userinfo = $q->fetch();
 
@@ -26,7 +27,7 @@
         extract($_POST);
         secure(['nom', 'prenom', 'quartier']);        
         
-        $req = $db->prepare('UPDATE users SET 
+        $req = $db->prepare('UPDATE utilisateur SET 
             nom = ?, 
             prenom = ?, 
             quartier = ?, 

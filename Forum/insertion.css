@@ -1,0 +1,11 @@
+body{
+	background-color:#00ffff;
+}
+.container{
+	margin: 0 auto;
+}
+
+
+.message,.auteur,.titre{
+	margin-top:10px;
+}

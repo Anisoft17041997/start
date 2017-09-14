@@ -14,11 +14,13 @@
 
 			secure(['pseudo', 'pass']);
 			
-			$q = $db->prepare("SELECT * FROM users WHERE mdp = ? AND pseudo = ?");
+			$q = $db->prepare("SELECT * FROM utilisateur WHERE mdp = ? AND pseudo = ?");
 			$q->execute(array(sha1($pass), $pseudo));
 			$res = $q->rowCount();
-			echo $res;
+			
+
 			if($res == 1){
+				print_r($_SESSION);
 				// echo "Redirection";
 				$userinfo = $q->fetch();//On recupere le resultat
 				//Et on le memorise en session
@@ -27,7 +29,7 @@
 				$_SESSION['pass'] = $userinfo['pass'];
 
 				//Redirection de l'abonne sur sa page de profil
-				header('Location: profil.php?id='.get_session('id'));
+				header('Location: profil.php?id='.$userinfo['id']);
 			}else{
 				echo "Mauvais identifiant ou mot de passe";
 				$errors[] = "Mauvais identifiant ou mot de passe";				

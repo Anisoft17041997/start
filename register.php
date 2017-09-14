@@ -7,7 +7,7 @@
 	//On verifie si le formulaire a ete soumis
 	if (isset($_POST['submit'])) {
 
-		if(not_empty(['pseudo', 'pass', 'cpass', 'email', 'tel'])){
+		if(not_empty(['pseudo', 'pass', 'cpass', 'tel'])){
 
 			extract($_POST);
 
@@ -26,11 +26,11 @@
 				$errors [] = "Les deux mots de passe ne sont pas identiques";
 			}
 
-			if(is_already_in_use('pseudo',$pseudo,'users')){
+			if(is_already_in_use('pseudo',$pseudo,'utilisateur')){
 				$errors[] = "Pseudo déja utilisé";
 			}
 
-			if(is_already_in_use('email',$email,'users')){
+			if(is_already_in_use('email',$email,'utilisateur')){
 				$errors[] = "Adresse email déja utilise";
 			}
 
@@ -39,10 +39,10 @@
 			}
 			
 			if(count($errors) == 0){
-				$query = $db->prepare("INSERT INTO users (pseudo,mdp,email,telephone) VALUES (?, ?, ?, ?)");//Parametres nommees
+				$query = $db->prepare("INSERT INTO utilisateur (pseudo,mdp,email,telephone) VALUES (?, ?, ?, ?)");//Parametres nommees
 				$query->execute(array($pseudo, sha1($pass), $email, $tel));	
 
-				$_SESSION['cptcree'] = "Votre compte a ete bien cree <a href=\"login.php\">Me connecter</a>";
+				// $_SESSION['cptcree'] = "Votre compte a ete bien cree <a href=\"login.php\">Me connecter</a>";
 				
 				// header('Location: login.php');
 			}else{

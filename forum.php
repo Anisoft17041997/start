@@ -19,29 +19,14 @@
 				<div class="container">
 				<!-- Logo -->
 					<a href="index.php" class="logo">
-						<img src="scope.png" alt="" />  <span class="title">SCoPE</span>
+						<img src="scope.png" alt="" />
 					</a>
 
 						<!-- Nav -->
-                <nav>
-                    <ul>
-                        <li style="margin-right:10px;"><a href="#logout.php" class="btn btn-lg"><span class="glyphicon glyphicon-user"></span></a></li>
-                        <li><a href="#menu">Menu</a></li>
-                    </ul>
-                </nav>
+               		<?php include 'partials/_nav.php';?>
   				</div>
   					</header>
-				<div class="container">
-					<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="forum.php">Forum</a></li>
-							<li><a href="#">News</a></li>
-							<li><a href="#">Jouer</a></li>
-						</ul>
-					</nav>
-				</div>
+				
 
 				<div class="container">
 					<div>

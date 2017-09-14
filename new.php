@@ -1,1 +1,5 @@
-<?php include 'views/new.view.php'; ?>
+<?php 
+
+	include 'views/new.view.php'; 
+
+?>

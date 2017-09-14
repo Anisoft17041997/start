@@ -1,6 +1,6 @@
-<?php include '../partials/_header.php';?>
+<?php include 'partials/_header.php';?>
 <body>
-	<?php include '../partials/_nav.php'; ?>
+	<?php include 'partials/_nav.php'; ?>
 	<div id="wrap-body">
 		<div class="chunk">
 			<div class="forumbg">
