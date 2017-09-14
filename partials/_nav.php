@@ -1,3 +1,10 @@
+<style type="text/css">
+    header{
+
+    } 
+
+</style>
+
 <header id="header" class="container">					
 	<!-- Logo -->
 	<a href="index.php" class="logo">

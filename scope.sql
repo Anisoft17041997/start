@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 14 Septembre 2017 à 02:44
+-- Généré le :  Jeu 14 Septembre 2017 à 19:38
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -139,26 +139,32 @@ CREATE TABLE `profile` (
 --
 
 CREATE TABLE `utilisateur` (
-  `ID` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `U_num` varchar(5) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `pseudo` varchar(25) NOT NULL,
   `mdp` varchar(50) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `telephone` varchar(12) NOT NULL,
   `sexe` varchar(10) NOT NULL,
   `quartier` varchar(100) NOT NULL,
   `date_inscription` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `nb_kit` int(11) NOT NULL DEFAULT '0'
+  `nb_kit` int(11) NOT NULL DEFAULT '0',
+  `isUser` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`ID`, `nom`, `prenom`, `pseudo`, `mdp`, `email`, `telephone`, `sexe`, `quartier`, `date_inscription`, `nb_kit`) VALUES
-(2, 'AGBONON EDAGBEDJI', 'Yao Anicet', 'Anisoft', 'f7b1dbc2f64402c077344578e68e6d140453bfff', 'lanicet17@gmail.com', '93121675', 'Homme', 'Colas', '2017-09-13 23:45:36', 14),
-(3, 'EHOLOUM', 'Gnouleling', 'Gausoft', 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', 'gausoft@gmail.com', '98765432', 'Homme', 'AgoÃ¨', '2017-09-13 23:49:34', 2);
+INSERT INTO `utilisateur` (`id`, `U_num`, `nom`, `prenom`, `pseudo`, `mdp`, `email`, `telephone`, `sexe`, `quartier`, `date_inscription`, `nb_kit`, `isUser`) VALUES
+(2, 'U_0', 'AGBONON EDAGBEDJI', 'Yao Anicet', 'Anisoft', 'f7b1dbc2f64402c077344578e68e6d140453bfff', 'lanicet17@gmail.com', '93121675', 'Homme', 'Colas', '2017-09-14 16:38:31', 17, 1),
+(8, '', '', '', 'toto123', '9bb7fb7e7c6e094d00a0031247dee9e70416728d', '', '98765432', 'Homme', '', '2017-09-14 15:38:52', 0, 0),
+(9, '', '', '', 'gauthier', '88ea39439e74fa27c09a4fc0bc8ebe6d00978392', 'gausoft@gmail.com', '1211111', '', '', '2017-09-14 17:15:57', 0, 0),
+(10, '', '', '', 'abele', '87b4dc663ed70b4de5f2ff76418365a7843343c3', '', '223244343', '', '', '2017-09-14 17:24:47', 0, 0),
+(11, '', '', '', 'sarah', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '', '90887766', '', '', '2017-09-14 17:27:57', 0, 0),
+(12, '', '', '', 'coco124', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '', '98725139', '', '', '2017-09-14 17:29:59', 0, 0);
 
 --
 -- Index pour les tables exportées
@@ -204,7 +210,7 @@ ALTER TABLE `profile`
 -- Index pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -244,7 +250,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

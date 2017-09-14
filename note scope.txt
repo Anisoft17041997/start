@@ -7,4 +7,9 @@
 - appli pour diagnostiquer la poubele, 
 - syteme de code qr pour gerer les poubelles
 
+
+-mettre les noms en UpperCase dans la base
+-mettre les messages d'erreurs
+-trucer la base de donnees pour insérer des données exactes
+
  
