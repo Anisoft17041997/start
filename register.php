@@ -30,12 +30,8 @@
 				$errors[] = "Pseudo déja utilisé";
 			}
 
-			if(is_already_in_use('email',$email,'utilisateur')){
+			if(is_already_in_use('email',$email,'utilisateur') && $email != null){
 				$errors[] = "Adresse email déja utilise";
-			}
-
-			if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-				$errors [] = "Adresse email invalide!";
 			}
 			
 			if(count($errors) == 0){

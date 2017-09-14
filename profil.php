@@ -28,6 +28,7 @@
         secure(['nom', 'prenom', 'quartier']);        
         
         $req = $db->prepare('UPDATE utilisateur SET 
+            U_num = ?,
             nom = ?, 
             prenom = ?, 
             quartier = ?, 
@@ -36,7 +37,7 @@
             WHERE id = ?'
         );
 
-        $req->execute(array($nom, $prenom, $quartier, $sexe, 1, $_SESSION['id']));
+        $req->execute(array('U_n', $nom, $prenom, $quartier, $sexe, 1, $_SESSION['id']));
 
      }else{
         $errors[] = "Veuillez renseigner tous les champs";

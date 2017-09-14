@@ -163,13 +163,18 @@
     if(!function_exists('afficher_users')){
         function afficher_users(){
             global $db;
-            $query = $db->prepare("SELECT * FROM utilisateur ORDER BY nom");
-            $query->execute();
-            $q = $db->prepare("SELECT count(*) nombre FROM utilisateur");
-            $q->execute();
+            $query = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? ORDER BY nom");
+            $val = '1';
+            $query->execute(array($val));
+            $abonne = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? ORDER BY nom");
+            $val = '0';
+            $abonne->execute(array($val));
+            $q = $db->prepare("SELECT count(*) nombre FROM utilisateur WHERE isUser=?");
+            $val = '1';
+            $q->execute(array($val));
             $nb = $q->fetch();
 
-            return array('query' =>  $query , 'nb' => $nb);
+            return array('query' =>  $query,'abonne' =>  $abonne , 'nb' => $nb);
         }
     }
 
