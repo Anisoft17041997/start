@@ -7,12 +7,14 @@
     <h2 style="padding-bottom:25px;">Menu</h2>
     <ul>
       <li><a href="a_propos.php">A propos</a></li>
-      <li><a href="new.php">News</a></li>
-      <li><a href="forum.php">Forum</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Forum</a></li>
       <li><a href="#">Jouer</a></li>
       <li><a href="blog.php">Blog</a></li>
     </ul>
   </nav>
+
+  <!-- Modal de page invalide -->
 
   <!-- Main -->
   <div id="main">
@@ -161,7 +163,7 @@
        </div>
        <div class="modal-footer">
          <div class="form-group col-sm-2 col-xs-2">
-          <button type="submit" class="btn btn-primary" name="submit">Inscrire<span class="glyphicon glyphicon-ok"></span></button>
+          <button type="submit" class="btn btn-primary" name="submit">Inscrire&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
         </div>
       </div>									
     </div>

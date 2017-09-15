@@ -36,7 +36,7 @@
             isUser = ?
             WHERE id = ?'
         );
-
+        $nom = strtoupper($nom);
         $req->execute(array('U_n', $nom, $prenom, $quartier, $sexe, 1, $_SESSION['id']));
 
      }else{

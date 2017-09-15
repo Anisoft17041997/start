@@ -1,13 +1,7 @@
-<style type="text/css">
-    header{
-    	
-    } 
-
-</style>
 
 <header id="header" class="container">					
 	<!-- Logo -->
-	<a href="index.php" class="logo">
+	<a href="index.php" title="SCoPE/Accueil" class="logo">
 		<img class="img-responsive" src="img/scope.png" alt="" />
 	</a>
 	<!-- Nav -->

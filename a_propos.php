@@ -7,5 +7,3 @@
 	require 'login.php';
 
 	require 'views/a_propos.view.php';
-
-?>

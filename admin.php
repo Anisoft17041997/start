@@ -9,6 +9,7 @@
 	$query = $resultat['query'];
 	$abonne = $resultat['abonne'];
 	$nb = $resultat['nb'];
+	$nb_ab = $resultat['nb_ab'];
 	$nb_kit = nb_kit_tot();
 
 	//incrémenter le nombre de kits rempli

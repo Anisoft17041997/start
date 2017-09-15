@@ -52,9 +52,9 @@
   <h2 style="padding-bottom:25px;">Menu</h2>
   <ul>
     <li><a href="a_propos.php">A propos</a></li>
-    <li><a href="new.php">News</a></li>
-    <li><a href="forum.php">Forum</a></li>
-    <li><a href="#">Jouer</a></li>
+    <li><a href="#">News</a></li>
+      <li><a href="#">Forum</a></li>
+      <li><a href="#">Jouer</a></li>
     <li><a href="blog.php">Blog</a></li>
   </ul>
 </nav>
@@ -120,8 +120,8 @@
             </div>
             <div class="col-xs-12 col-md-12">
               <ul class="list-group">
-                <li class="list-group-item">Nombre de kits remplits : <span class="badge"><?= $user->nb_kit ?> </span></li>
-                <li class="list-group-item">Type de déchets produit : <span class="badge">Plastiques</span></li> 
+                <li class="list-group-item">Nombre de kits remplits <span class="badge"><?= $user->nb_kit ?> </span></li>
+                <li class="list-group-item">Type de déchets produit <span class="badge">Plastiques</span></li> 
               </ul>
             </div>
           </div>
@@ -131,7 +131,10 @@
         <div class="panel panel-primary">
           <div class="panel-heading">Géolocalisation</div>
           <div class="panel-body">
-            <div id="mapid"></div>
+            <div id="mapid">
+              <iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/fr/map/carte-des-banques-de-dechets-plastiques-de-lome_135838?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=false&allowEdit=false&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=false&onLoadPanel=undefined&captionBar=false">
+              </iframe> <!-- <p><a href="https://framacarte.org/fr/map/carte-scope_9435">Voir en plein écran</a></p> -->
+            </div>
           </div>
         </div>                          
       </div> 

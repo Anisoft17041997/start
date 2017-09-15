@@ -1,21 +1,3 @@
-<?php include 'partials/_header.php';?>
-<body>
-  <!-- Header -->
-  <?php include 'partials/_nav.php';?>
-  <!-- Menu -->
-  <nav id="menu">
-    <h2 style="padding-bottom:25px;">Menu</h2>
-    <ul>
-      <li><a href="a_propos.php">A propos</a></li>
-      <li><a href="#">News</a></li>
-      <li><a href="#">Forum</a></li>
-      <li><a href="#">Jouer</a></li>
-      <li><a href="blog.php">Blog</a></li>
-    </ul>
-  </nav>
-
-  <!-- Modal de page invalide -->
-
   <!--Texte concernat SCoPE-->
   <div class="container text-center">
     <div class="row">
@@ -50,42 +32,3 @@
 
 </div>
 </div><hr>
-
-
-<!-- </div> -->
-<script type="text/javascript">
- va$(function(){
-  if("geolocation" in navigator){
-    navigator.geolocation.getCurrentPosition(function(position){
-      console.log(position);
-      var pos = {};
-      pos.lat = position.coords.latitude;
-      pos.lon = position.coords.longitude;
-      console.log(pos);
-      dibujarMmapa(pos);
-      obtenerDireccion(pos);
-    });
-  }else{
-    alert('Votre navigateur ne supporte pas la geolocation');
-  }
-});
-
- 
- var dibujarMmapa =  function(pos){
-  var map = L.map('mapid').setView([pos.lat, pos.lon], 16);
-  L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {foo: 'bar'}).addTo(map);
-  
-  var marker = L.marker([pos.lat, pos.lon]).addTo(map).bindPopup("<img src='img/avatar.png'>", {minWidth: 80}).openPopup();
-
-  var info = "<a href='#' style='text-decoration:none;'><img style='width:100%' src='img/scope.png' /><br>&nbsp;&nbsp;<b style='margin-left:18px;'>Woelab<br><i>Banque plastique N°1</i></b></a>";  
-
-  var infob = "<a href='#' style='text-decoration:none;'><img style='width:100%' src='img/scope.png' /><br>&nbsp;&nbsp;<b>Woelab prime<br><i>Banque plastique N°2</i></b></a>";    
-  var marker1 = L.marker([6.163909, 1.208513]).addTo(map).bindPopup(info);
-  var marker2 = L.marker([6.214580, 1.136198]).addTo(map).bindPopup(infob);
-
-} eLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {foo: 'bar'}).addTo(map);
-</script>
-<?php include 'partials/_footer.php'; ?>
-</body>
-
-</html>

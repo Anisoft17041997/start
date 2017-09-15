@@ -169,12 +169,18 @@
             $abonne = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? ORDER BY nom");
             $val = '0';
             $abonne->execute(array($val));
+            //nombre d'utilisateurs
             $q = $db->prepare("SELECT count(*) nombre FROM utilisateur WHERE isUser=?");
             $val = '1';
             $q->execute(array($val));
             $nb = $q->fetch();
+            //nombre d'abonnés
+            $q_ab = $db->prepare("SELECT count(*) nombre_ab FROM utilisateur WHERE isUser=?");
+            $val = '0';
+            $q_ab->execute(array($val));
+            $nb_ab = $q_ab->fetch();
 
-            return array('query' =>  $query,'abonne' =>  $abonne , 'nb' => $nb);
+            return array('query' =>  $query,'abonne' =>  $abonne , 'nb' => $nb, 'nb_ab' => $nb_ab);
         }
     }
 

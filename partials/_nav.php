@@ -1,13 +1,7 @@
-<style type="text/css">
-    header{
-
-    } 
-
-</style>
 
 <header id="header" class="container">					
 	<!-- Logo -->
-	<a href="index.php" class="logo">
+	<a href="index.php" title="SCoPE/Accueil" class="logo">
 		<img class="img-responsive" src="img/scope.png" alt="" />
 	</a>
 	<!-- Nav -->
@@ -16,14 +10,14 @@
             <?php
             if(check_session()){
                 ?>
-                <li style="margin-right:10px;"><a href="logout.php" class="btn btn-lg"><span style="color:#67cd67;" class="glyphicon glyphicon-user"></span></a></li>
+                <li style="margin-right:10px;"><a href="logout.php" title="Se déconnecter" class="btn btn-lg"><span style="color:#67cd67;" class="glyphicon glyphicon-user"></span></a></li>
                 <?php
             }else{
                 ?>
                 <li style="margin-right:10px;">
-                    <a href="#" id="submit" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a href="#" title="S'inscrire" id="submit" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-edit"></span></a>
                 </li>
-                <li style="margin-right:10px;"><a href="../logout.php" id="isConnect" class="btn btn-lg" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-user"></span></a></li>
+                <li style="margin-right:10px;"><a href="../logout.php" title="Se connecter" id="isConnect" class="btn btn-lg" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-user"></span></a></li>
                 <?php
             }
             ?>

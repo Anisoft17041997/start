@@ -8,8 +8,8 @@
   <h2 style="padding-bottom:25px;">Menu</h2>
   <ul>
     <li><a href="a_propos.php">A propos</a></li>
-    <li><a href="new.php">News</a></li>
-    <li><a href="forum.php">Forum</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#">Forum</a></li>
     <li><a href="#">Jouer</a></li>
     <li><a href="blog.php">Blog</a></li>
   </ul>
@@ -42,16 +42,23 @@
                 <h3 class="panel-title">Statistiques</h3>
               </div>
               <div class="panel-body">
-                <div class="col-md-6">
+                <div class="col-xs-12 col-md-4">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $nb['nombre']; ?></h2>
+                    <h2><span class="fa fa-user text-success" aria-hidden="true"></span> <?php echo $nb['nombre']; ?></h2>
                     <h4> Utilisateus</h4>
                   </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-xs-12 col-md-4">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> <?php echo $nb_kit['kit_tot']; ?> </h2>
+                    <h2><span class="fa fa-user-o text-succes" aria-hidden="true"></span> <?php echo $nb_ab['nombre_ab']; ?></h2>
+                    <h4> Abonnés</h4>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                  <div class="well dash-box">
+                    <h2><span class="fa fa-bar-chart-o text-succes" aria-hidden="true"></span> <?php echo $nb_kit['kit_tot']; ?> </h2>
                     <h4>Kits totals levés</h4>
                   </div>
                 </div>
@@ -77,20 +84,20 @@
                     <th class="text-center">CRUD</th>
                   </tr>
                   <?php while ($data = $query->fetch()) { ?>
-                  <tr>
-                    <td><?=$data['U_num'] ?></td>
-                    <td><?=$data['nom'] ?></td>
-                    <td><?=$data['prenom'] ?></td>
-                    <td><?=$data['email'] ?></td>
-                    <td><?=$data['telephone'] ?></td>
-                    <td><?=$data['sexe'] ?></td>
-                    <td><?=$data['quartier'] ?></td>
-                    <td class="text-center"><?=$data['nb_kit'] ?><a href="admin.php?id=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" ><span class="btn btn-primary glyphicon glyphicon-plus pull-right"></span></a></td>
-                    <td class="text-center">
-                      <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
-                      <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
-                    </td>
-                  </tr>
+                    <tr>
+                      <td><?=$data['U_num'] ?></td>
+                      <td><?=$data['nom'] ?></td>
+                      <td><?=$data['prenom'] ?></td>
+                      <td><?=$data['email'] ?></td>
+                      <td><?=$data['telephone'] ?></td>
+                      <td><?=$data['sexe'] ?></td>
+                      <td><?=$data['quartier'] ?></td>
+                      <td class="text-center"><?=$data['nb_kit'] ?><a href="admin.php?id=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" ><span class="btn btn-primary glyphicon glyphicon-plus pull-right"></span></a></td>
+                      <td class="text-center">
+                        <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
+                        <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
+                      </td>
+                    </tr>
                   <?php }?>
                 </table>
               </div>
@@ -110,15 +117,15 @@
                     <th class="text-center">CRUD</th>
                   </tr>
                   <?php while ($data = $abonne->fetch()) { ?>
-                  <tr>
-                    <td><?=$data['pseudo'] ?></td>
-                    <td><?=$data['email'] ?></td>
-                    <td><?=$data['telephone'] ?></td>
-                    <td class="text-center">
-                      <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
-                      <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
-                    </td>
-                  </tr>
+                    <tr>
+                      <td><?=$data['pseudo'] ?></td>
+                      <td><?=$data['email'] ?></td>
+                      <td><?=$data['telephone'] ?></td>
+                      <td class="text-center">
+                        <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
+                        <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
+                      </td>
+                    </tr>
                   <?php }?>
                 </table>
               </div>
@@ -158,7 +165,7 @@
                     </div>
                     <div class="modal-footer">
                       <div class="form-group col-sm-2 col-xs-2">
-                        <button type="submit" class="btn btn-primary" name="submit">Enregistrer<span class="glyphicon glyphicon-ok"></span></button>
+                        <button type="submit" class="btn btn-primary" name="submit">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
                       </div>
                     </div>
                   </div>
