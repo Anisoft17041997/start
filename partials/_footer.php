@@ -3,7 +3,7 @@
   <div class="container"> 
     <div class="row">
       
-      <div class="col-md-8 col-xs-8">
+      <div class="col-xs-12 col-md-8">
         <a href="#"><img src="img/woelab.jpg" alt="woelab" ></a>
         <a href="#"><img src="img/WAZI_UP_logo.png" alt="WAZIUP"></a>
         <a href="#"><img src="img/test.PNG" alt="Fjords"></a>
@@ -18,7 +18,7 @@
         <a href="#"><img src="img/innotec.PNG" alt="innotec"></a>
       </div>
 
-      <div class="col-offset-md-8 col-offset-xs-8 col-xs-4 col-xs-4 align-center">
+      <div class="col-offset-md-8 col-md-4 col-xs-12 align-center">
         <!-- <h4>Nous suivre</h4> -->
         <ul class="icons">
           <li><a href="http://www.twitter.com/@we_scope" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>

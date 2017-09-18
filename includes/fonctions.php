@@ -1,131 +1,140 @@
 <?php
-    
 
-	require 'config/database.php';
-    
-	if(!function_exists('not_empty')){
-		function not_empty($fields = []){
-			if(count($fields) != 0){
-				foreach ($fields as $field) {
-					if(empty($_POST[$field]) || trim($_POST[$field]) == ""){
-						return false;
-					}
-				}
-				return true;
-			}
-		}
-	}
 
-	if(!function_exists('is_already_in_use')){
-		function is_already_in_use($field, $value, $table){
-			global $db;
-			$q = $db->prepare("SELECT id FROM $table WHERE $field = ?");
-			$q->execute([$value]);
-			$count = $q->rowCount();
-			$q->closeCursor();
+    require 'config/database.php';
 
-			return $count;
-		}
-	}
+        //Fonction permettant de vérifier si un champ est vide ou pas
+    if(!function_exists('not_empty')){
+      function not_empty($fields = []){
+         if(count($fields) != 0){
+            foreach ($fields as $field) {
+               if(empty($_POST[$field]) || trim($_POST[$field]) == ""){
+                  return false;
+              }
+          }
+          return true;
+      }
+    }
+    }
 
-	if(!function_exists('set_flash')){
- 		function set_flash($msg, $type = 'info'){
- 			$_SESSION['notification']['msg'] = $msg;
- 			$_SESSION['notification']['type'] = $type;
- 		} 		
- 	}
+        //Fonction permettant de vérifier si une valeur est deja utilisé
+    if(!function_exists('is_already_in_use')){
+      function is_already_in_use($field, $value, $table){
+         global $db;
+         $q = $db->prepare("SELECT id FROM $table WHERE $field = ?");
+         $q->execute([$value]);
+         $count = $q->rowCount();
+         $q->closeCursor();
 
- 	if(!function_exists('secure')){
- 		function secure($fields = []){
- 			if(count($fields) != 0){
- 				foreach ($fields as $field) {
- 					if($field == 'pass'){
- 						$_POST[$field] = sha1($_POST[$field]);
- 					}
+         return $count;
+     }
+    }
 
- 					$_POST[$field] = htmlspecialchars(strip_tags(trim($_POST[$field])));
- 				}
- 			}
- 		}
- 	}
-   
+        //Fonction permettant de mettre des messages flash(succes ou error)
+    if(!function_exists('set_flash')){
+     function set_flash($msg, $type = 'info'){
+        $_SESSION['notification']['msg'] = $msg;
+        $_SESSION['notification']['type'] = $type;
+    } 		
+    }
+
+        //Fonction permettant de sécuriser des données
+    if(!function_exists('secure')){
+     function secure($fields = []){
+        if(count($fields) != 0){
+           foreach ($fields as $field) {
+              if($field == 'pass'){
+                 $_POST[$field] = sha1($_POST[$field]);
+             }
+
+             $_POST[$field] = htmlspecialchars(strip_tags(trim($_POST[$field])));
+         }
+     }
+    }
+    }
+
+        //Fonction permettant de sauvegarder des données entrées dans les champs
     if(!function_exists('save_input_data')){
-		function save_input_data(){		
-			foreach ($_POST as $key => $value) {
-				if(strpos($key, 'pass') === false){
-					$_SESSION['input'][$key] = $value;	
-				}
-				
-			}
-		}       
+      function save_input_data(){		
+         foreach ($_POST as $key => $value) {
+            if(strpos($key, 'pass') === false){
+               $_SESSION['input'][$key] = $value;	
+           }
+
+       }
+    }       
     }
 
+        //Fonction permettant de répérer des données saisies
+    if(!function_exists('get_input')){
+      function get_input($key){
 
-     if(!function_exists('get_input')){
-     	function get_input($key){
+         if(!empty($_SESSION['input'][$key])){
 
-     		if(!empty($_SESSION['input'][$key])){
-     			
-     			return $_SESSION['input'][$key];
-     		}
-     		return null;
-     	}
-		
+            return $_SESSION['input'][$key];
+        }
+        return null;
     }
 
+    }
+
+        //Fonction permettant de supprimer des données saisies
     if(!function_exists('clear_input_data')){
-     	function clear_input_data(){
-     		
-     		$_SESSION['input'] = [];     		
-     	}
-		
+      function clear_input_data(){
+
+         $_SESSION['input'] = [];     		
+     }
+
     }
 
+        //Fonction permettant de récupérer la clé dans une session
     if(!function_exists('get_session')){
-     	function get_session($key){
+      function get_session($key){
 
-     		if(!empty($_SESSION[$key])){
-     			return $_SESSION[$key];
-     		}
-     		return null;
-     	}
-		
+         if(!empty($_SESSION[$key])){
+            return $_SESSION[$key];
+        }
+        return null;
     }
 
-     if(!function_exists('find_user_by_id')){
-     	function find_user_by_id($id){
-     		global $db;
-
-     		$q = $db->prepare("SELECT * FROM utilisateur WHERE id = ? ");
-     		$q->execute([$id]);
-
-     		$data = current($q->fetchAll(PDO::FETCH_OBJ));
-     		$q->closeCursor();
-
-     		return $data;
-     	}
-		
     }
 
-	if(!function_exists('get_avatar_url')){
-     	function get_avatar_url($email){   		
-     		return "http://gravatar.com/avatar/".md5(strtolower(trim(email)));
-     	}
-		
+        //Fonction permettant de rétrouver un utlisateur par son id
+    if(!function_exists('find_user_by_id')){
+      function find_user_by_id($id){
+         global $db;
+
+         $q = $db->prepare("SELECT * FROM utilisateur WHERE id = ? ");
+         $q->execute([$id]);
+
+         $data = current($q->fetchAll(PDO::FETCH_OBJ));
+         $q->closeCursor();
+
+         return $data;
+     }
+
+    }
+
+        //Fonction permettant de récupérer un avatar
+    if(!function_exists('get_avatar_url')){
+      function get_avatar_url($email){   		
+         return "http://gravatar.com/avatar/".md5(strtolower(trim(email)));
+     }
+
     }    
 
+        //Fonction permettant de checker une session
     if(!function_exists('check_session')){
         function check_session(){
-            if(isset($_SESSION['id']) && isset($_SESSION['pseudo'])){
-                if(!empty($_SESSION['id'] && !empty($_SESSION['pseudo']))){
-                    return true;
-                }
+            if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo'])){
+                return true;
             }
             return false;
         }
-        
+
     }    
 
+    //Fonction permettant de vérifier si un abonné est un utilisateur
     if(!function_exists('isUser')){
         function isUser(){
             global $db;
@@ -150,7 +159,8 @@
             echo '</pre>'; 
         }        
     }
-    
+
+    //Fonction affichant les erreur
     if(!function_exists('print_debug')){
         function print_debug($monVar){
             echo '<pre>';
@@ -163,17 +173,22 @@
     if(!function_exists('afficher_users')){
         function afficher_users(){
             global $db;
+            
+            //sélection des utilisateurs
             $query = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? ORDER BY nom");
             $val = '1';
             $query->execute(array($val));
+            //sélection des abonnes
             $abonne = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? ORDER BY nom");
             $val = '0';
             $abonne->execute(array($val));
+            
             //nombre d'utilisateurs
             $q = $db->prepare("SELECT count(*) nombre FROM utilisateur WHERE isUser=?");
             $val = '1';
             $q->execute(array($val));
             $nb = $q->fetch();
+            
             //nombre d'abonnés
             $q_ab = $db->prepare("SELECT count(*) nombre_ab FROM utilisateur WHERE isUser=?");
             $val = '0';
@@ -184,7 +199,7 @@
         }
     }
 
-    //fonction permettant de supprimer un utilisateur
+        //fonction permettant de supprimer un utilisateur
     if(!function_exists('supprimer')){
         function supprimer($key)
         {
@@ -195,7 +210,7 @@
         }
     }
 
-    //incrémenter lennombre de kit
+        //incrémenter lennombre de kit
     if(!function_exists('inc_nb_kit')){
         function inc_nb_kit($key, $nb_kit_courant)
         {
@@ -204,7 +219,7 @@
                 UPDATE utilisateur 
                 set nb_kit = ?
                 WHERE id = ?
-            ");
+                ");
             $temp = $nb_kit_courant+1;
             $query->execute(array($temp, $key));
             header('Location: admin.php');
@@ -212,7 +227,7 @@
     }
 
 
-    //fonction permettant d'obtenir le nmbre de kits levés
+        //fonction permettant d'obtenir le nmbre de kits levés
     if(!function_exists('nb_kit_tot')){
         function nb_kit_tot()
         {
@@ -220,12 +235,12 @@
             $nb_kit = $db->prepare("SELECT SUM(nb_kit) kit_tot FROM utilisateur");
             $nb_kit->execute();
             $donnee = $nb_kit->fetch();
-            
+
             return $donnee;
         }
     }
 
-    //fonction permettant d'attribuer des U_ aux utilisateurs
+    /*//fonction permettant d'attribuer des U_ aux utilisateurs
     if(!function_exists('les_U_')){
         function les_U_()
         {
@@ -235,4 +250,4 @@
             
             return $donnee;
         }
-    }
+    }*/

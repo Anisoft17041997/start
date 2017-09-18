@@ -51,14 +51,14 @@
 
                 <div class="col-xs-12 col-md-4">
                   <div class="well dash-box">
-                    <h2><span class="fa fa-user-o text-succes" aria-hidden="true"></span> <?php echo $nb_ab['nombre_ab']; ?></h2>
+                    <h2><span class="fa fa-user-o" aria-hidden="true"></span> <?php echo $nb_ab['nombre_ab']; ?></h2>
                     <h4> Abonnés</h4>
                   </div>
                 </div>
 
                 <div class="col-xs-12 col-md-4">
                   <div class="well dash-box">
-                    <h2><span class="fa fa-bar-chart-o text-succes" aria-hidden="true"></span> <?php echo $nb_kit['kit_tot']; ?> </h2>
+                    <h2><span class="fa fa-bar-chart-o text-success" aria-hidden="true"></span> <?php echo $nb_kit['kit_tot']; ?> </h2>
                     <h4>Kits totals levés</h4>
                   </div>
                 </div>
@@ -74,8 +74,7 @@
                 <table class="table table-striped table-hover">
                   <tr>
                     <th>U_num</th>
-                    <th>Nom</th>
-                    <th>Prénoms</th>
+                    <th>Nom et Prenom(s)</th>
                     <th>Email</th>
                     <th>Téléphone</th>
                     <th>Sexe</th>
@@ -86,13 +85,13 @@
                   <?php while ($data = $query->fetch()) { ?>
                     <tr>
                       <td><?=$data['U_num'] ?></td>
-                      <td><?=$data['nom'] ?></td>
-                      <td><?=$data['prenom'] ?></td>
+                      <td><?=$data['nom'] ?>&nbsp;<?=$data['prenom'] ?></td>
                       <td><?=$data['email'] ?></td>
                       <td><?=$data['telephone'] ?></td>
                       <td><?=$data['sexe'] ?></td>
                       <td><?=$data['quartier'] ?></td>
-                      <td class="text-center"><?=$data['nb_kit'] ?><a href="admin.php?id=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" ><span class="btn btn-primary glyphicon glyphicon-plus pull-right"></span></a></td>
+                      <td class=""><?=$data['nb_kit'] ?><a href="admin.php?id=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" >&nbsp;<span class="btn btn-primary glyphicon glyphicon-plus pull-right"></span></a>
+                      </td>
                       <td class="text-center">
                         <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
                         <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
@@ -160,7 +159,7 @@
                      </div>
                      <div class="form-group">
                        <label for="tel">Téléphone <span class="text-danger">*</span></label>
-                       <input name="tel" type="tel" class="form-control" id="tel" placeholder="Téléphone" required="required" data-parsley-type="number">
+                       <input name="tel" type="tel" class="form-control" id="tel" placeholder="Téléphone" required="required" maxlength="8" data-parsley-type="number">
                      </div>
                     </div>
                     <div class="modal-footer">
