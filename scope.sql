@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 14 Septembre 2017 à 19:38
+-- Généré le :  Lun 18 Septembre 2017 à 12:58
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -40,7 +40,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `nom`, `prenom`, `email`, `pseudo`, `mdp`) VALUES
-(1, 'scope', 'scopescope', 'scope@lafricainedarchitecture.com', 'scope', '999scope999');
+(1, 'scope', 'scopescope', 'scope@lafricainedarchitecture.com', 'scope', '999scope999'),
+(2, 'AGBONON EDAGBEDJI', 'Yao Anicet', 'lanicet17@gmail.com', 'Anisoft', 'anicet17');
 
 -- --------------------------------------------------------
 
@@ -141,7 +142,7 @@ CREATE TABLE `profile` (
 CREATE TABLE `utilisateur` (
   `id` int(11) NOT NULL,
   `U_num` varchar(5) NOT NULL,
-  `nom` varchar(20) NOT NULL,
+  `nom` varchar(60) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `pseudo` varchar(25) NOT NULL,
   `mdp` varchar(50) NOT NULL,
@@ -160,11 +161,14 @@ CREATE TABLE `utilisateur` (
 
 INSERT INTO `utilisateur` (`id`, `U_num`, `nom`, `prenom`, `pseudo`, `mdp`, `email`, `telephone`, `sexe`, `quartier`, `date_inscription`, `nb_kit`, `isUser`) VALUES
 (2, 'U_0', 'AGBONON EDAGBEDJI', 'Yao Anicet', 'Anisoft', 'f7b1dbc2f64402c077344578e68e6d140453bfff', 'lanicet17@gmail.com', '93121675', 'Homme', 'Colas', '2017-09-14 16:38:31', 17, 1),
-(8, '', '', '', 'toto123', '9bb7fb7e7c6e094d00a0031247dee9e70416728d', '', '98765432', 'Homme', '', '2017-09-14 15:38:52', 0, 0),
-(9, '', '', '', 'gauthier', '88ea39439e74fa27c09a4fc0bc8ebe6d00978392', 'gausoft@gmail.com', '1211111', '', '', '2017-09-14 17:15:57', 0, 0),
-(10, '', '', '', 'abele', '87b4dc663ed70b4de5f2ff76418365a7843343c3', '', '223244343', '', '', '2017-09-14 17:24:47', 0, 0),
+(8, 'U_1', 'TOTOGAN', 'tata123', 'toto123', '9bb7fb7e7c6e094d00a0031247dee9e70416728d', 'totogan@gmail.com', '98765432', 'Homme', 'totoville', '2017-09-15 12:06:59', 2, 1),
 (11, '', '', '', 'sarah', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '', '90887766', '', '', '2017-09-14 17:27:57', 0, 0),
-(12, '', '', '', 'coco124', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '', '98725139', '', '', '2017-09-14 17:29:59', 0, 0);
+(12, '', '', '', 'coco124', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '', '98725139', '', '', '2017-09-14 17:29:59', 0, 0),
+(13, 'U_n', 'TATA', 'tata', 'tata123', '526e6bc36f1b7e82d7bd2d1825fa0deed521e0a1', 'tata@gmail.com', '98765432', 'Homme', 'Klala', '2017-09-18 09:18:19', 4, 1),
+(14, '', '', '', 'firmine', '0005474501c70d977655745e72fec6a55b0b133c', 'firmine@gmail.com', '98765432', '', '', '2017-09-15 16:24:32', 0, 0),
+(15, '', '', '', 'kodjo', '740204bf1ab09e87a7a0a79dec710b5e949629ff', 'kodjogan@gmail.com', '98765432', '', '', '2017-09-15 16:27:05', 0, 0),
+(16, '', '', '', 'husfqdesfef', 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', 'sjzefzerf@gmail.com', '757564646', '', '', '2017-09-15 16:29:38', 0, 0),
+(17, '', '', '', 'John123', 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', 'john@gmail.com', '90876543', '', '', '2017-09-18 09:19:09', 0, 0);
 
 --
 -- Index pour les tables exportées
@@ -220,7 +224,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `billets`
 --
@@ -250,7 +254,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

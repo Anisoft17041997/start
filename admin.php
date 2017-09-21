@@ -17,7 +17,12 @@
 		inc_nb_kit((int)$_GET['id'], (int)$_GET['nb_kit']);
 	}
 
-	/*  LES OPERATIONS CRUD  */ 
+	//decrémenter le nombre de kits rempli
+	/*if(isset($_GET['id']) && isset($_GET['nb_kit'])){
+		dec_nb_kit((int)$_GET['id'], (int)$_GET['nb_kit']);
+	}*/
+
+	/***  LES OPERATIONS CRUD  ***/ 
 	//Suppression 
 	if (isset($_GET['del']) AND !empty($_GET['del'])) {
 		supprimer((int)$_GET['del']);

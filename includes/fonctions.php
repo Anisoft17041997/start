@@ -175,7 +175,7 @@
             global $db;
             
             //sélection des utilisateurs
-            $query = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? ORDER BY nom");
+            $query = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? ORDER BY U_num");
             $val = '1';
             $query->execute(array($val));
             //sélection des abonnes
@@ -210,7 +210,7 @@
         }
     }
 
-        //incrémenter lennombre de kit
+    //incrémenter le nombre de kit
     if(!function_exists('inc_nb_kit')){
         function inc_nb_kit($key, $nb_kit_courant)
         {
@@ -226,8 +226,24 @@
         }
     }
 
+    //decrémenter le nombre de kit
+    /*if(!function_exists('dec_nb_kit')){
+        function dec_nb_kit($key, $nb_kit_courant)
+        {
+            global $db;
+            $query_dec = $db->prepare("
+                UPDATE utilisateur 
+                set nb_kit = ?
+                WHERE id = ?
+                ");
+            $temp_dec = $nb_kit_courant-1;
+            $query_dec->execute(array($temp_dec, $key));
+            header('Location: admin.php');
+        }
+    }*/
 
-        //fonction permettant d'obtenir le nmbre de kits levés
+
+    //fonction permettant d'obtenir le nombre de kits levés
     if(!function_exists('nb_kit_tot')){
         function nb_kit_tot()
         {
@@ -239,15 +255,4 @@
             return $donnee;
         }
     }
-
-    /*//fonction permettant d'attribuer des U_ aux utilisateurs
-    if(!function_exists('les_U_')){
-        function les_U_()
-        {
-            global $db;
-            $u_ = $db->prepare("SELECT SUM(nb_kit) kit_tot FROM utilisateur");
-            $u_->execute();
-            
-            return $donnee;
-        }
-    }*/
+    

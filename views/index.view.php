@@ -167,13 +167,14 @@
     </div>									
   </div>
 </form>
-<?php if(count($errors) > 0): ?>
+<!-- <?php if(count($errors) > 0): ?>
  <script type="text/javascript">
-  
+
   $('#submit').click();
-  
+
 </script>
 <?php endif; ?>
+ -->
 </div>
 </div><!-- Modal -->
 </div>

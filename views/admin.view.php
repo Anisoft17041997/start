@@ -1,25 +1,25 @@
 <?php include 'partials/_header.php';?>
 
 <body>
-<!-- Header -->
-<?php include 'partials/_nav_2.php';?>
-<!-- Menu -->
-<nav id="menu">
-  <h2 style="padding-bottom:25px;">Menu</h2>
-  <ul>
-    <li><a href="a_propos.php">A propos</a></li>
-    <li><a href="#">News</a></li>
-    <li><a href="#">Forum</a></li>
-    <li><a href="#">Jouer</a></li>
-    <li><a href="blog.php">Blog</a></li>
-  </ul>
-</nav>
+  <!-- Header -->
+  <?php include 'partials/_nav_2.php';?>
+  <!-- Menu -->
+  <nav id="menu">
+    <h2 style="padding-bottom:25px;">Menu</h2>
+    <ul>
+      <li><a href="a_propos.php">A propos</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Forum</a></li>
+      <li><a href="#">Jouer</a></li>
+      <li><a href="blog.php">Blog</a></li>
+    </ul>
+  </nav>
 
-<!-- Main -->
+  <!-- Main -->
 
-<div class="container">
-  <div class="row">
-    <!-- Article main content -->
+  <div class="container">
+    <div class="row">
+      <!-- Article main content -->
     <!-- <article class="col-xs-12 maincontent">
     -->
     <header id="header">
@@ -39,24 +39,24 @@
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Statistiques</h3>
+                <h3 class="panel-title text-uppercase">Statistiques</h3>
               </div>
               <div class="panel-body">
-                <div class="col-xs-12 col-md-4">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                   <div class="well dash-box">
                     <h2><span class="fa fa-user text-success" aria-hidden="true"></span> <?php echo $nb['nombre']; ?></h2>
                     <h4> Utilisateus</h4>
                   </div>
                 </div>
 
-                <div class="col-xs-12 col-md-4">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                   <div class="well dash-box">
                     <h2><span class="fa fa-user-o" aria-hidden="true"></span> <?php echo $nb_ab['nombre_ab']; ?></h2>
                     <h4> Abonnés</h4>
                   </div>
                 </div>
 
-                <div class="col-xs-12 col-md-4">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                   <div class="well dash-box">
                     <h2><span class="fa fa-bar-chart-o text-success" aria-hidden="true"></span> <?php echo $nb_kit['kit_tot']; ?> </h2>
                     <h4>Kits totals levés</h4>
@@ -66,23 +66,24 @@
             </div>
 
             <!-- Latest Users -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Liste des utilsateurs</h3>
-              </div>
-              <div class="panel-body">
-                <table class="table table-striped table-hover">
-                  <tr>
-                    <th>U_num</th>
-                    <th>Nom et Prenom(s)</th>
-                    <th>Email</th>
-                    <th>Téléphone</th>
-                    <th>Sexe</th>
-                    <th>Quartier</th>
-                    <th>Nombre de kits</th>
-                    <th class="text-center">CRUD</th>
-                  </tr>
-                  <?php while ($data = $query->fetch()) { ?>
+            <div class="panel-group panel-responsive">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-uppercase">Liste des utilsateurs</h3>
+                </div>
+                <div class="panel-body">
+                  <table class="table table-striped table-hover">
+                    <tr>
+                      <th>U_num</th>
+                      <th>Nom et Prenom(s)</th>
+                      <th>Email</th>
+                      <th>Téléphone</th>
+                      <th>Sexe</th>
+                      <th>Quartier</th>
+                      <th>Nombre de kits</th>
+                      <th class="text-center">CRUD</th>
+                    </tr>
+                    <?php while ($data = $query->fetch()) { ?>
                     <tr>
                       <td><?=$data['U_num'] ?></td>
                       <td><?=$data['nom'] ?>&nbsp;<?=$data['prenom'] ?></td>
@@ -97,25 +98,27 @@
                         <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
                       </td>
                     </tr>
-                  <?php }?>
-                </table>
+                    <?php }?>
+                  </table>
+                </div>
               </div>
-            </div>
-            <?php include 'partials/_error.php'; ?>
-            <!-- liste des abonnés -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Liste des abonnés <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs pull-right">Nouvel abonné</a></h3>
-              </div>
-              <div class="panel-body">
-                <table class="table table-striped table-hover">
-                  <tr>
-                    <th>Pseudo</th>
-                    <th>Email</th>
-                    <th>Téléphone</th>
-                    <th class="text-center">CRUD</th>
-                  </tr>
-                  <?php while ($data = $abonne->fetch()) { ?>
+
+              <?php include 'partials/_error.php'; ?>
+
+              <!-- liste des abonnés -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-uppercase" >Liste des abonnés <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs pull-right">Nouvel abonné</a></h3>
+                </div>
+                <div class="panel-body">
+                  <table class="table table-striped table-hover">
+                    <tr>
+                      <th>Pseudo</th>
+                      <th>Email</th>
+                      <th>Téléphone</th>
+                      <th class="text-center">CRUD</th>
+                    </tr>
+                    <?php while ($data = $abonne->fetch()) { ?>
                     <tr>
                       <td><?=$data['pseudo'] ?></td>
                       <td><?=$data['email'] ?></td>
@@ -125,10 +128,12 @@
                         <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
                       </td>
                     </tr>
-                  <?php }?>
-                </table>
+                    <?php }?>
+                  </table>
+                </div>
               </div>
-            </div>
+
+            </div>            
 
             <!-- Modal ajout d'un abonné -->
             <form method="post" data-parsley-validate autocomplete="off">
@@ -161,20 +166,20 @@
                        <label for="tel">Téléphone <span class="text-danger">*</span></label>
                        <input name="tel" type="tel" class="form-control" id="tel" placeholder="Téléphone" required="required" maxlength="8" data-parsley-type="number">
                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <div class="form-group col-sm-2 col-xs-2">
-                        <button type="submit" class="btn btn-primary" name="submit">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-                      </div>
+                   </div>
+                   <div class="modal-footer">
+                    <div class="form-group col-sm-2 col-xs-2">
+                      <button type="submit" class="btn btn-primary" name="submit">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
                     </div>
                   </div>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <?php include 'partials/_footer_2.php'; ?>
-  </body>
+  <?php include 'partials/_footer_2.php'; ?>
+</body>
