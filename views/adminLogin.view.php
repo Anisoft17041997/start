@@ -35,14 +35,14 @@
           <!-- <div class="col-md-7">
             <b><a href="">Mot de passe oublié?</a></b>
           </div> -->
-          <div class="col-md-5 text-right">
-            <button class="btn btn-primary" type="submit" name="connect">Se connecter</button>
+            <div class="col-md-5 text-right">
+              <button class="btn btn-primary" type="submit" name="connect">Se connecter</button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
 </body>
 

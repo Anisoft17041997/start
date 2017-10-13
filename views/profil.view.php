@@ -62,16 +62,16 @@
 <!-- Modal pour profil -->
 <div class="container">        
   <!-- Panels -->
+  <?php  require 'includes/fonctions.php'; ?>
   <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
     <div class="row">
       <div class="col-md-6 col-xs-12">
         <div class="panel panel-primary">
           <div class="panel-heading">Profil de <?= $user->pseudo ?></div>
           <div class="panel-body">
-            <?php $gravatar_url = "http://gravatar.com/avatar/".md5(strtolower(trim($user->email))); ?>
             <div class="row">
               <div class="col-xs-2">
-                <a href="" ><img src="img/avatar.png" title="Changer de photo de profil" alt="Image de profil de <?= $user->pseudo ?>" class="img-circle img-responsive"></a>
+                <a href="editProfil.php" ><img src="img/profil/<?=$user->pp?>" title="Modifier profil" alt="Profil de <?= $user->pseudo ?>" class="img-circle img-responsive"></a>
               </div>
               <div class="col-xs-10">
                 <ul class="list-group">
@@ -83,7 +83,7 @@
           </div>
         </div>
       </div>
-      <?php  require 'includes/fonctions.php'; ?>
+      
 
       <div class="col-md-3"><?php include 'devenirUser.php';?></div>
       <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
@@ -104,10 +104,9 @@
         <div class="panel panel-primary">
           <div class="panel-heading">Profil de <strong><?= $user->pseudo ?></strong></div>
           <div class="panel-body">
-            <?php $gravatar_url = "http://gravatar.com/avatar/".md5(strtolower(trim($user->email))); ?>
             <div class="row">
               <div class="col-md-3">
-                <a href="" ><img src="img/avatar.png" title="Changer de photo de profil" alt="Image de profil de <?= $user->pseudo ?>" class="img-circle" style=""></a>
+                <a href="editProfil.php" ><img src="img/profil/<?=$user->pp?>" title="Modifier profil" alt="Profil de <?= $user->pseudo ?>" class="img-circle" style=""></a>
               </div>
               <div class="col-xs-9 col-md-9">
                 <ul class="list-group">
