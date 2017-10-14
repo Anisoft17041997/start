@@ -69,7 +69,7 @@
             <div class="panel-group panel-responsive">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title text-uppercase">Liste des utilsateurs</h3>
+                  <h3 class="panel-title text-uppercase">Liste des utilsateurs <a href="#" data-toggle="modal" data-target="#myModalUser" class="btn btn-primary btn-xs pull-right">Nouvel utilisateur</a></h3>
                 </div>
                 <div class="panel-body">
                   <table class="table table-striped table-hover">
@@ -170,6 +170,67 @@
                    <div class="modal-footer">
                     <div class="form-group col-sm-2 col-xs-2">
                       <button type="submit" class="btn btn-primary" name="submit">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+		  
+		  <!-- Modal ajout d'un utilisateur -->
+            <form method="post" data-parsley-validate autocomplete="off">
+              <div id="myModalUser" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title"><span type="button" class="close" data-dismiss="modal">&times;</span>Ajouter un utilisateur</h4>
+                    </div>
+                    <div class="modal-body">
+						<div class="form-group">
+                            <label for="name">Nom <span class="text-danger">*</span></label>
+                            <input name="nom" type="text" class="form-control" id="name" placeholder="Votre nom" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">Prénom <span class="text-danger">*</span></label>
+                            <input name="prenom" type="text" class="form-control" id="firstname" placeholder="Votre prénom" required="required">
+                        </div>
+						<div class="form-group">
+                            <label for="sexe">Sexe</label>
+                            <select class="form-control" name="sexe" id="sexe">
+                                <option value="Homme" selected="selected">Homme</option>
+                                <option value="Femme">Femme</option>
+                            </select>
+                        </div>
+						<div class="form-group">
+							<label for="pseudo">Pseudo <span class="text-danger">*</span></label>
+							<input name="pseudo" type="text" class="form-control" id="email" placeholder="Nom d'utilisateur" required="required" data-parsley-minlength="5">
+						</div>
+						<div class="form-group">
+							<label for="pwd">Mot de passe <span class="text-danger">*</span></label> 
+							<input name="pass" type="password" class="form-control" id="pwd" placeholder="Mot de passe" required="required" data-parsley-minlength="6">
+						</div>
+						<div class="form-group">
+							<label for="cpwd">Confirmation <span class="text-danger">*</span></label>
+							<input name="cpass" type="password" class="form-control" id="cpwd" placeholder="Confirmer votre mot de passe" required="required" >
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input name="email" type="email" class="form-control" id="email" placeholder="Email" data-parsley-type="email" data-parsley-trigger="change">
+						</div>
+						<div class="form-group">
+							<label for="tel">Téléphone <span class="text-danger">*</span></label>
+							<input name="tel" type="tel" class="form-control" id="tel" placeholder="Téléphone" required="required" maxlength="8" data-parsley-type="number">
+						</div>
+						 <div class="form-group">
+                            <label for="adresse">Quartier <span class="text-danger">*</span></label>
+                            <input name="quartier" type="text" class="form-control" id="adresse" placeholder="Votre quartier" required="required">
+                        </div>
+                   </div>
+                   <div class="modal-footer">
+                    <div class="form-group col-sm-2 col-xs-2">
+                      <button type="submit" class="btn btn-primary" name="submitUser">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
                     </div>
                   </div>
                 </div>
