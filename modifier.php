@@ -17,7 +17,8 @@ if (!empty($_GET['id'])) {
 	$email = $data['email'];
 	$telephone = $data['telephone'];
 	$sexe = $data['sexe'];
-	$quartier = $data['quartier'];	
+	$quartier = $data['quartier'];
+    $isUser = $data['isUser'];
 }
 
 	//Modification les information des utilisateurs

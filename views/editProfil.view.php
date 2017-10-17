@@ -63,4 +63,3 @@
 
 <?php include 'partials/_footer_2.php'; ?>
 </body>
-</html>

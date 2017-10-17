@@ -243,4 +243,6 @@
   </section>
 
   <?php include 'partials/_footer_2.php'; ?>
+      </div>
+    </div>
 </body>
