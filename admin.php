@@ -59,24 +59,26 @@
 				$insert = $db->prepare("
 					INSERT INTO utilisateur (pseudo,mdp,email,telephone) 
 					VALUES (?, ?, ?, ?)");//Parametres nommees
-				$insert->execute(array($pseudo, sha1($pass), $email, $tel));	
+				$insert->execute(array($pseudo, sha1($pass), $email, $tel));
+                //Redirection de l'abonne sur sa page de profil
+                header('Location: admin.php?id='.get_session('id'));
 			}else{
 				save_input_data();
 				//ramener le modale
-			}	
+			}
 		}else{
 			save_input_data();
 			$errors [] = "Veuillez renseigner tous les champs";
 			//ramener le modale
 		}
-	
+
 	}
-	
+
 	// Ajouter un utilisateur
 	//On verifie si le formulaire a ete soumis
 	if (isset($_POST['submitUser'])) {
 
-		if(not_empty(['nom', 'prenom', 'sexe', 'pseudo', 'pass', 'cpass', 'email', 'tel', 'quartier'])){
+		if(not_empty(['nom', 'prenom', 'sexe', 'pseudo', 'pass', 'cpass', 'tel', 'quartier'])){
 
 			extract($_POST);
 
@@ -86,11 +88,11 @@
 			if (mb_strlen($nom) < 3) {
 				$errors [] = "Nom trop court (Minimum 3 caractères)";
 			}
-			
+
 			if (mb_strlen($prenom) < 3) {
 				$errors [] = "Prénom trop court (Minimum 3 caractères)";
-			} 
-			
+			}
+
 			if (mb_strlen($pseudo) < 3) {
 				$errors [] = "Pseudo trop court (Minimum 3 caractères)";
 			}
@@ -110,21 +112,23 @@
 			if(is_already_in_use('email',$email,'utilisateur') && $email != null){
 				$errors[] = "Adresse email déja utilise";
 			}
-			
+
 			if(count($errors) == 0){
 				$insert = $db->prepare("
 					INSERT INTO utilisateur (nom,prenom,sexe,pseudo,mdp,email,telephone,quartier,isUser) 
 					VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");//Parametres nommees
-				$insert->execute(array($nom, $prenom, $sexe, $pseudo, sha1($pass), $email, $tel, $quartier, 1));	
+				$insert->execute(array($nom, $prenom, $sexe, $pseudo, sha1($pass), $email, $tel, $quartier, 1));
+                //Redirection de l'abonne sur sa page de profil
+                header('Location: admin.php?id='.get_session('id'));
 			}else{
 				save_input_data();
 				//ramener le modale
-			}	
+			}
 		}else{
 			save_input_data();
 			$errors [] = "Veuillez renseigner tous les champs";
 			//ramener le modale
 		}
-	
+
 	}
 	require 'views/admin.view.php';

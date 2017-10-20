@@ -136,8 +136,10 @@
             </div>            
 
             <!-- Modal ajout d'un abonné -->
-            <form method="post" data-parsley-validate autocomplete="off">
-              <div id="myModal" class="modal fade" role="dialog">
+              <form method="post" data-parsley-validate autocomplete="off">
+                  <?php include'partials/_error.php' ?>
+                  <?php include'partials/_success.php' ?>
+                  <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
                   <!-- Modal content-->
@@ -179,7 +181,7 @@
 		  
 		  <!-- Modal ajout d'un utilisateur -->
             <form method="post" data-parsley-validate autocomplete="off">
-              <div id="myModalUser" class="modal fade" role="dialog">
+                <div id="myModalUser" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
                   <!-- Modal content-->

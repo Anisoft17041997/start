@@ -73,7 +73,9 @@
               <div class="col-xs-2">
                 <a href="editProfil.php" ><img src="img/profil/<?=$user->pp?>" title="Modifier profil" alt="Profil de <?= $user->pseudo ?>" class="img-circle img-responsive"></a>
               </div>
-              <div class="col-xs-10">
+           </div>
+           <div class="row">
+              <div class="col-xs-12">
                 <ul class="list-group">
                   <li class="list-group-item"><b>Pseudo : </b><?= $user->pseudo ?></li>
                   <li class="list-group-item"><b>Email : </b><a href="mailto:<?= $user->email ?>"><?= $user->email ?></a></li>
@@ -108,20 +110,20 @@
               <div class="col-md-3">
                 <a href="editProfil.php" ><img src="img/profil/<?=$user->pp?>" title="Modifier profil" alt="Profil de <?= $user->pseudo ?>" class="img-circle" style=""></a>
               </div>
-              <div class="col-xs-9 col-md-9">
+            </div>
+            <div class="row">
+             <div class="col-xs-12">
                 <ul class="list-group">
                   <li class="list-group-item"><b>Pseudo : </b><?= $user->pseudo ?></li>
                   <li class="list-group-item"><b>Email : </b><a href="mailto:<?= $user->email ?>"><?= $user->email ?></a></li>
                   <li class="list-group-item"><b>Téléphone : </b><?= $user->telephone ?></li>
                   <li class="list-group-item"><b>Quartier : </b><?= $user->quartier ?></li>
-                </ul>                        
-              </div>
-            </div>
-            <div class="col-xs-12 col-md-12">
-              <ul class="list-group">
-                <li class="list-group-item">Nombre de kits remplits <span class="badge"><?= $user->nb_kit ?> </span></li>
-                <li class="list-group-item">Type de déchets produit <span class="badge">Plastiques</span></li> 
+                </ul>
+                <ul class="list-group">
+                  <li class="list-group-item">Nombre de kits remplits <span class="badge"><?= $user->nb_kit ?> </span></li>
+                  <li class="list-group-item">Type de déchets produit <span class="badge">Plastiques</span></li> 
               </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -201,5 +203,6 @@
 
   <!-- Localisation -->
   <!-- <iframe width="100%" height="300px" frameBorder="0" src="https://framacarte.org/fr/map/carte-scope_9435?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="https://framacarte.org/fr/map/carte-scope_9435">Voir en plein écran</a></p> -->
-</body>
+    </div>
+  </body>
 </html>
