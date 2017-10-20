@@ -2,7 +2,8 @@
 <footer id="footer" style="background-color:white;">
   <div class="container"> 
     <div class="row">
-      
+
+        <!-- Nos partenaires -->
       <div class="col-xs-12 col-md-8">
         <a href="#"><img class="img-respnsive" src="img/woelab.jpg" alt="woelab" ></a>
         <a href="#"><img class="img-respnsive" src="img/WAZI_UP_logo.png" alt="WAZIUP"></a>
@@ -18,8 +19,8 @@
         <a href="#"><img class="img-respnsive" src="img/innotec.PNG" alt="innotec"></a>
       </div>
 
+        <!-- Nous suivre -->
       <div class="col-offset-md-8 col-md-4 col-xs-12 align-center">
-        <!-- <h4>Nous suivre</h4> -->
         <ul class="icons">
           <li><a href="http://www.twitter.com/@we_scope" target="_blank" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
           <li><a href="http://www.facebook.com/scope" target="_blank" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>

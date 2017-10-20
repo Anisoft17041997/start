@@ -1,5 +1,5 @@
 <?php include 'partials/_header.php';?>
-<body>
+<body class="container">
 	<?php include 'partials/_nav.php'; ?>
 	<div id="wrap-body">
 		<div class="chunk">

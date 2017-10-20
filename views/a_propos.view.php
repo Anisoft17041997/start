@@ -1,5 +1,5 @@
 <?php include 'partials/_header.php';?>
-<body>
+<body class="container">
   <!-- Wrapper -->
   <div id="wrapper">
     <!-- Header -->
@@ -10,7 +10,7 @@
       <h2 style="padding-bottom:25px;">Menu</h2>
       <ul>
         <li><a href="a_propos.php">A propos</a></li>
-        <li><a href="#">News</a></li>
+        <li><a href="news.php">News</a></li>
         <li><a href="#">Forum</a></li>
         <li><a href="#">Jouer</a></li>
         <li><a href="blog.php">Blog</a></li>
@@ -59,10 +59,10 @@
         </div>
       </section><hr>
       <section>
-        <h3 style="color: #00ffff;">Notre équipe</h3>
-        <div class="row">
+        <h3  class="text-center" style="color: #00ffff;">Notre équipe</h3>
+        <div class="row ">
           <!-- Carousel -->
-          <div class="col-md-6">
+          <div class="col-md-offset-3 col-md-6">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">
@@ -161,3 +161,5 @@
 </script>
 <?php include 'partials/_footer.php'; ?>
 </body>
+
+</html>

@@ -116,11 +116,10 @@
 <?php include 'views/login.view.php'; ?>
 <!--Texte concernat SCoPE-->
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-offset-1 col-md-10">
         <p style="text-align:justify;">
             En vue de sauver, d'assainir l'environnement et apprendre à la population de mieux gérer les déchets plastiques, SCoPE est une entreprise idéale dans le sujet qui propose des services d'un dispositif intelligent qu'elle a mise en place: assainir la ville.Créé et accéléré par la communauté WoeLab, prise en chage par son programme d'incubation, elle fait partie du groupe #SilliconVillage et bénéficie à ce titre de la proximité d'autres startups tech qui la complète idéalement.
-        </p><br>
-        <button href="../logout.php" data-toggle="modal" data-target="#myModal2" type="submit" class="btn btn-scope " name="submit"> Devenir utilisateur » </button>
+        </p>
     </div>
 </div><br/>
 
@@ -168,9 +167,23 @@
                         </div>
                     </div>
                 </form>
+                <!-- <?php if(count($errors) > 0): ?>
+ <script type="text/javascript">
+
+  $('#submit').click();
+
+</script>
+<?php endif; ?>
+ -->
             </div>
-        </div><!-- fin Modal -->
+        </div><!-- Modal -->
     </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10 col-xs-offset-1 col-xs-10">
+            <button href="../logout.php" data-toggle="modal" data-target="#myModal2" type="submit" class="btn btn-lg btn-block btn-primary align-center" name="submit"> Devenir utilisateur</button>
+        </div>
+    </div>
+
 </div><hr>
 
 <!-- la map interactive -->

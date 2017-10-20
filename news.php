@@ -1,7 +1,5 @@
 <?php 
 
 	require "includes/fonctions.php";
-	
-	include 'views/new.view.php'; 
 
-?>
+	include 'views/news.view.php';

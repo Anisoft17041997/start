@@ -40,3 +40,11 @@ h4{
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
+
+.btn-scope{
+	background-color: #00ffff;
+}
+
+.btn-scope:hover{
+	background-color: darkgrey;
+}
