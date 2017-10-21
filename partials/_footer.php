@@ -4,23 +4,17 @@
     <div class="row">
 
         <!-- Nos partenaires -->
-      <div class="col-xs-12 col-md-8">
+      <div class="col-xs-12 col-md-6"><hr>
         <a href="#"><img class="img-respnsive" src="img/woelab.jpg" alt="woelab" ></a>
         <a href="#"><img class="img-respnsive" src="img/WAZI_UP_logo.png" alt="WAZIUP"></a>
-        <a href="#"><img class="img-respnsive" src="img/test.PNG" alt="Fjords"></a>
         <a href="#"><img class="img-respnsive" src="img/archi.PNG" alt="archi"></a>
         <a href="#"><img class="img-respnsive" src="img/ispace.PNG" alt="ispace"></a>
-        <a href="#"><img class="img-respnsive" src="img/univ-pays-labor.PNG" alt="univ-pays-labor"></a>
-        <a href="#"><img class="img-respnsive" src="img/coders_africa.PNG" alt="coders_africa"></a>
-        <a href="#"><img class="img-respnsive" src="img/create-net.PNG" alt="create-net"></a>
-        <a href="#"><img class="img-respnsive" src="img/CTI.PNG" alt="CTI"></a>
-        <a href="#"><img class="img-respnsive" src="img/farmerline.PNG" alt="farmerline"></a>
         <a href="#"><img class="img-respnsive" src="img/global-market.PNG" alt="global-market"></a>
         <a href="#"><img class="img-respnsive" src="img/innotec.PNG" alt="innotec"></a>
       </div>
 
         <!-- Nous suivre -->
-      <div class="col-offset-md-8 col-md-4 col-xs-12 align-center">
+      <div class="col-offset-md-1 col-md-5 col-xs-12 align-right"><hr>
         <ul class="icons">
           <li><a href="http://www.twitter.com/@we_scope" target="_blank" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
           <li><a href="http://www.facebook.com/scope" target="_blank" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>

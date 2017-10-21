@@ -111,16 +111,20 @@
         </a>
     </div>
 </div>
-</div>
 <!-- </div> -->
 <?php include 'views/login.view.php'; ?>
 <!--Texte concernat SCoPE-->
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6"><hr>
+        <p>
+            <img class="img-responsive" src="img/img2.jpg" alt="dépotoire_de_dechets_plastiques">
+        </p>
+    </div>
+    <div class="col-md-6"><hr>
         <p style="text-align:justify;">
             En vue de sauver, d'assainir l'environnement et apprendre à la population de mieux gérer les déchets plastiques, SCoPE est une entreprise idéale dans le sujet qui propose des services d'un dispositif intelligent qu'elle a mise en place: assainir la ville.Créé et accéléré par la communauté WoeLab, prise en chage par son programme d'incubation, elle fait partie du groupe #SilliconVillage et bénéficie à ce titre de la proximité d'autres startups tech qui la complète idéalement.
-        </p><br>
-        <button href="../logout.php" data-toggle="modal" data-target="#myModal2" type="submit" class="btn btn-scope " name="submit"> Devenir utilisateur » </button>
+        </p><hr>
+        <button href="../logout.php" data-toggle="modal" data-target="#myModal2" type="submit" class="btn btn-block btn-scope " name="submit"> Devenir utilisateur » </button>
     </div>
 </div><br/>
 
@@ -171,7 +175,7 @@
             </div>
         </div><!-- fin Modal -->
     </div>
-</div><hr>
+</div>
 
 <!-- la map interactive -->
 <iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/fr/map/carte-des-banques-de-dechets-plastiques-de-lome_135838?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=false&allowEdit=false&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=false&onLoadPanel=undefined&captionBar=false">
