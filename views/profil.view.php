@@ -67,12 +67,12 @@
     <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
         <div class="row">
         <div class="col-md-6 col-xs-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Profil de <?= $user->pseudo ?></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Profil de <strong><?= $user->pseudo ?></strong></div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-xs-2">
-                            <a href="editProfil.php" ><img src="img/profil/<?=$user->pp?>" title="Modifier profil" alt="Profil de <?= $user->pseudo ?>" class="img-circle img-responsive"></a>
+                        <div class="col-xs-12">
+                            <a href="editProfil.php?id=<?=$_SESSION['id']?>" ><img class="img-responsive img-circle img-thumbnail img-pp" src="img/profils/<?= $user->pp ?>" title="Modifier profil" alt="Profil de <?= $user->pseudo ?>" class="img-circle img-responsive"></a>
                         </div>
                     </div>
                     <div class="row">
@@ -91,10 +91,10 @@
         <div class="col-md-3"><?php include 'devenirUser.php';?></div>
         <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
             <div class="col-md-6 col-xs-12">
-                <div class="panel panel-primary">
+                <div class="panel panel-default">
                     <div class="panel-heading">Completer mon profil</div>
                     <div class="panel-body">
-                        <button type="button" class="btn btn-info btn-lg boutton btn-block "  data-toggle="modal" data-target="#myModal">Devenir utilisateur</button>
+                        <button type="button" class="btn btn-scope btn-lg boutton btn-block "  data-toggle="modal" data-target="#myModal">Devenir utilisateur</button>
                     </div>
                 </div>
             </div>
@@ -104,12 +104,12 @@
     <?php else: ?>
         <div class="row">
             <div class="col-md-6 col-xs-12">
-                <div class="panel panel-primary">
+                <div class="panel panel-default">
                     <div class="panel-heading">Profil de <strong><?= $user->pseudo ?></strong></div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-3">
-                                <a href="editProfil.php" ><img src="img/profil/<?=$user->pp?>" title="Modifier profil" alt="Profil de <?= $user->pseudo ?>" class="img-circle" style=""></a>
+                            <div class="col-xs-12">
+                                <a href="editProfil.php?id=<?=$_SESSION['id']?>" ><img class="img-responsive img-circle img-thumbnail img-pp" src="img/profils/<?=$user->pp?>" title="Modifier profil" alt="Profil de <?= $user->pseudo ?>" class="img-circle" style=""></a>
                             </div>
                         </div>
                         <div class="row">
@@ -130,7 +130,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-xs-12">
-                <div class="panel panel-primary">
+                <div class="panel panel-default">
                     <div class="panel-heading">Géolocalisation</div>
                     <div class="panel-body">
                         <div id="mapid">

@@ -75,11 +75,9 @@
             </div>
         <?php } ?>
         <hr>
-        <div class="row">
-          <div class="form-group col-sm-2 col-xs-2">
-            <button type="submit" class="btn btn-primary" name="submit">Modifier <span class="glyphicon glyphicon-ok"></span></button>
+          <div class="form-group pull-right">
+            <button type="submit" class="btn btn-scope" name="submit">Modifier&nbsp<icon class="glyphicon glyphicon-ok"></icon></button>
           </div>
-        </div>
       </form>
     </div>
 

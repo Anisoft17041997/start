@@ -136,6 +136,8 @@
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <form method="post" data-parsley-validate autocomplete="off">
+                    <?php include 'partials/_error.php'; ?>
+                    <?php include 'partials/_success.php'; ?>
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">
@@ -143,7 +145,6 @@
                                 Créer un profil</h4>
                         </div>
                         <div class="modal-body">
-                            <?php include 'partials/_error.php'; ?>
                             <div class="form-group">
                                 <label for="pseudo">Pseudo <span class="text-danger">*</span></label>
                                 <input name="pseudo" type="text" class="form-control" id="email" placeholder="Nom d'utilisateur" required="required" data-parsley-minlength="5">
@@ -166,9 +167,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="form-group col-sm-2 col-xs-2">
-                                <button type="submit" class="btn btn-primary" name="submit">Inscrire&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-                            </div>
+                            <button type="submit" class="btn btn-scope" name="submit">Inscrire &nbsp<icon class="glyphicon glyphicon-ok"></icon></button>
                         </div>
                     </div>
                 </form>

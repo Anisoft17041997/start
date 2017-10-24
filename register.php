@@ -36,11 +36,9 @@
 			
 			if(count($errors) == 0){
 				$query = $db->prepare("INSERT INTO utilisateur (pseudo,mdp,email,telephone) VALUES (?, ?, ?, ?)");//Parametres nommees
-				$query->execute(array($pseudo, sha1($pass), $email, $tel));	
-
-				// $_SESSION['cptcree'] = "Votre compte a ete bien cree <a href=\"login.php\">Me connecter</a>";
+				$query->execute(array($pseudo, sha1($pass), $email, $tel));
 				
-				// header('Location: login.php');
+				header('Location: index.php');
 			}else{
 				save_input_data();
 				//ramener le modale

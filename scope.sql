@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 20 Octobre 2017 à 09:54
+-- Généré le :  Jeu 12 Octobre 2017 à 12:03
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -64,7 +64,6 @@ CREATE TABLE `billets` (
 
 CREATE TABLE `commentaires` (
   `id` int(11) NOT NULL,
-  `id_billet` int(11) NOT NULL,
   `auteur` varchar(255) NOT NULL,
   `commentaire` text NOT NULL,
   `date_commentaire` datetime NOT NULL
@@ -92,7 +91,8 @@ INSERT INTO `forum_reponses` (`ID`, `auteur`, `message`, `date_reponse`, `corres
 (1, '', 'hhjckjclkc', '2017-03-21 18:14:56', 1),
 (2, '', 'comment creer un site web?', '2017-03-21 18:15:52', 2),
 (3, '', 'kjugykwde', '2017-03-21 18:18:19', 3),
-(4, '', 'fghh', '2017-03-22 12:12:00', 4);
+(4, '', 'fghh', '2017-03-22 12:12:00', 4),
+(5, '', 'mon premier test du forum', '2017-10-20 23:32:22', 5);
 
 -- --------------------------------------------------------
 
@@ -116,22 +116,8 @@ INSERT INTO `forum_sujets` (`ID`, `auteur`, `titre`, `message`, `date_de_poster`
 (1, 'roland', 'vooi', 'hhjckjclkc', '2017-03-21 18:14:56'),
 (2, 'roland', 'site', 'comment creer un site web?', '2017-03-21 18:15:52'),
 (3, 'roland', 'ijufd', 'kjugykwde', '2017-03-21 18:18:19'),
-(4, 'roland', 'fg', 'fghh', '2017-03-22 12:12:00');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `profile`
---
-
-CREATE TABLE `profile` (
-  `ID` int(11) NOT NULL,
-  `pseudo` varchar(100) NOT NULL,
-  `mot_de_passe` varchar(100) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `telephone` int(20) NOT NULL,
-  `date_profile` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(4, 'roland', 'fg', 'fghh', '2017-03-22 12:12:00'),
+(5, '', 'test', 'mon premier test du forum', '2017-10-20 23:32:22');
 
 -- --------------------------------------------------------
 
@@ -189,8 +175,6 @@ INSERT INTO `utilisateur` (`id`, `U_num`, `nom`, `prenom`, `pseudo`, `mdp`, `ema
 (26, '', '', '', 'uMEsse', '063867af0d4cd1b6dea547c999267af49fcfa381', '', '90000000', '', '', '2017-09-21 14:11:04', 0, 0, 'default.png'),
 (27, '', '', '', 'rachida', 'a2e6e8a721bd21b05d3cd4b22149ca4055cba782', '', '90000000', '', '', '2017-09-21 14:11:22', 0, 0, 'default.png'),
 (28, '', '', '', 'robert', '12e9293ec6b30c7fa8a0926af42807e929c1684f', '', '90000000', '', '', '2017-09-21 14:11:44', 0, 0, 'default.png'),
-(29, '', '', '', 'karimaAssana', 'c8704e69113607495194656ac11ddcf1d7434657', '', '90000000', '', '', '2017-09-21 14:12:09', 0, 0, 'default.png'),
-(30, '', '', '', 'uRene123', '57ba875dab35c71277f057cd0424345547ce505e', '', '90000000', '', '', '2017-09-21 14:12:43', 0, 0, 'default.png'),
 (31, '', '', '', 'uBoukari', '79c7bc7554f3219ed7ae55ecb3153e73c4970517', '', '90000000', '', '', '2017-09-21 14:13:02', 0, 0, 'default.png'),
 (32, '', '', '', 'pelieJoel', '6f44d4fd601234ad956d3f5c1b98660b399f0595', '', '90000000', '', '', '2017-09-21 14:13:23', 0, 0, 'default.png'),
 (33, '', '', '', 'uKoffa', '2caea7516706905c26e89872da831bc37fd96dec', '', '90000000', '', '', '2017-09-21 14:13:47', 0, 0, 'default.png'),
@@ -200,7 +184,6 @@ INSERT INTO `utilisateur` (`id`, `U_num`, `nom`, `prenom`, `pseudo`, `mdp`, `ema
 (37, '', '', '', 'u34tsitsope', '357056399e1f6ca7d9a0cdbb720a539daa38f957', '', '90000000', '', '', '2017-09-21 14:15:59', 0, 0, 'default.png'),
 (38, '', '', '', 'u35ougblenou', '8b530b8c6bc46f85845ff08b6e413adb25a70e9b', '', '90000000', '', '', '2017-09-21 14:16:27', 0, 0, 'default.png'),
 (39, '', '', '', 'u36grace', '25c34eee14f540d657e3922fa4b9eb6a83edb92c', '', '90000000', '', '', '2017-09-21 14:16:48', 0, 0, 'default.png'),
-(40, '', '', '', 'u37kodjono', '363bc205289cdb0111983591e31be223f1e3b32a', '', '90000000', '', '', '2017-09-21 14:17:10', 0, 0, 'default.png'),
 (41, '', '', '', 'u38elHadj', '319c268ef72007e234d7921ff785257fe953be13', '', '90000000', '', '', '2017-09-21 14:17:37', 0, 0, 'default.png'),
 (42, '', '', '', 'u39hetegou', '9cd9b20691668a5c8a05fc3ecc78839f094b70af', '', '90000000', '', '', '2017-09-21 14:18:05', 0, 0, 'default.png'),
 (43, '', '', '', 'u40rose', 'e8959e8ec83d9880f6e706cd53985ae861d80f90', '', '90000000', '', '', '2017-09-21 14:18:25', 0, 0, 'default.png'),
@@ -209,20 +192,18 @@ INSERT INTO `utilisateur` (`id`, `U_num`, `nom`, `prenom`, `pseudo`, `mdp`, `ema
 (46, '', '', '', 'u42''tina', 'da81c89c330a09ff979b5d955c25ef36d9038bef', '', '90000000', '', '', '2017-09-21 14:20:06', 0, 0, 'default.png'),
 (47, '', '', '', 'u43nadege', 'ce1e8c84403d31829442f2c935970df26caabd51', '', '90000000', '', '', '2017-09-21 14:20:26', 0, 0, 'default.png'),
 (48, '', '', '', 'u44adjo', '8f256e8dfb62f6e1b3c2e71c4122965a8332a357', '', '90000000', '', '', '2017-09-21 14:20:44', 0, 0, 'default.png'),
-(49, '', '', '', 'u44''akamaDede', '2fc47eddef79e3e75c76b65d50a3d24f30f1f1bd', '', '90000000', '', '', '2017-09-21 14:21:10', 0, 0, 'default.png'),
 (50, '', '', '', 'b0francoine', '297f227bd6ef3d19580fdaf978d6e5013335cbee', '', '90000000', '', '', '2017-09-21 14:43:46', 0, 0, 'default.png'),
 (51, '', '', '', 'b1cindy', '5c54261bdece08a42ee98baddc3d8ee2104c96a5', '', '90000000', '', '', '2017-09-21 14:44:08', 0, 0, 'default.png'),
-(52, '', '', '', 'b2chantale', 'f5d9afd75530e7d22b033adc75da0c8d030dd119', '', '90000000', '', '', '2017-09-21 14:44:30', 0, 0, 'default.png'),
 (53, '', '', '', 'b3marie', 'e11f8bc9cdcd3201dfe2fcefa0e2e3fd7da4bd53', '', '90000000', '', '', '2017-09-21 14:44:59', 0, 0, 'default.png'),
 (56, 'U_1', 'BIDASSA', 'bidassa', 'b6bidassa', 'f1decc952727e6c424f5b083071ab9ca47076c50', 'bisassa@gmail.com', '91872666', 'Femme', 'AgoÃ¨', '2017-10-16 23:17:41', 6, 1, 'default.png'),
 (57, 'U_2', 'TOTOGAN', 'tatavi', 'toto123', '9bb7fb7e7c6e094d00a0031247dee9e70416728d', 'toto@gmail.com', '98765327', 'Homme', 'totoville', '2017-10-15 22:27:43', 4, 1, 'default.png'),
-(58, 'U_3', 'moi', 'encore moi', 'moi123', '421d4ba1a4f61ea28e4b693b273dc1eca6869b54', 'moi@gmail.com', '98675423', 'Femme', 'moiVillage', '2017-10-15 22:28:16', 4, 1, 'default.png'),
-(59, 'U_4', 'elle', 'elle encore', 'elle123', 'bf60b373cea11662037bb36d4470c9df97c5b9c3', 'elle@gmail.com', '98765423', 'Homme', 'elleville', '2017-10-17 08:21:52', 0, 1, 'default.png'),
+(58, 'U_3', 'moi', 'encore moi', 'moi123', '421d4ba1a4f61ea28e4b693b273dc1eca6869b54', 'moi@gmail.com', '98675423', 'Femme', 'moiVillage', '2017-10-20 23:07:34', 5, 1, 'default.png'),
+(59, 'U_4', 'elle', 'elle encore', 'elle123', 'bf60b373cea11662037bb36d4470c9df97c5b9c3', 'elle@gmail.com', '98765423', 'Homme', 'elleville', '2017-10-20 09:04:14', 1, 1, 'default.png'),
 (64, 'U_n', '', '', 'truuuuuuuuuuuu', '69facde793c65bbc39e58ca07caebff23703ceec', '', '98875747', '', '', '2017-10-19 23:46:40', 0, 0, 'default.png'),
 (65, 'U_n', '', '', 'titotototitot', '69facde793c65bbc39e58ca07caebff23703ceec', '', '87676756', '', '', '2017-10-19 23:47:26', 0, 0, 'default.png'),
-(66, 'U_n', 'dsvbgfdbgdfbbghf', 'bgdfbb', 'dbbdbt', '0eeebeb262552102a925d1f48dd9a24454aebe60', '', '89788676', 'Homme', 'dbbdbt', '2017-10-19 23:49:19', 0, 1, 'default.png'),
+(66, 'U_5', 'dsvbgfdbgdfbbghf', 'bgdfbb', 'dbbdbt', '0eeebeb262552102a925d1f48dd9a24454aebe60', '', '89788676', 'Homme', 'dbbdbt', '2017-10-20 09:04:20', 2, 1, 'default.png'),
 (69, 'U_n', '', '', 'moimoimoi', '3e0d8ac12463eb716c26913f9bed2fcb3c268976', '', '87865645', '', '', '2017-10-20 00:04:03', 0, 0, 'default.png'),
-(71, 'U_n', 'elleelle', 'elleelle', 'elleelle', '53d4efa3dbcce2d23dc11856b516885f7660a291', '', '87878675', 'Homme', 'elleelle', '2017-10-20 00:06:09', 0, 1, 'default.png');
+(71, 'U_6', 'elleelle', 'elleelle', 'elleelle', '53d4efa3dbcce2d23dc11856b516885f7660a291', '', '87878675', 'Homme', 'elleelle', '2017-10-20 23:07:43', 2, 1, 'default.png');
 
 --
 -- Index pour les tables exportées
@@ -259,12 +240,6 @@ ALTER TABLE `forum_sujets`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index pour la table `profile`
---
-ALTER TABLE `profile`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Index pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
@@ -293,17 +268,12 @@ ALTER TABLE `commentaires`
 -- AUTO_INCREMENT pour la table `forum_reponses`
 --
 ALTER TABLE `forum_reponses`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `forum_sujets`
 --
 ALTER TABLE `forum_sujets`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT pour la table `profile`
---
-ALTER TABLE `profile`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --

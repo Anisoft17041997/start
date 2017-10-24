@@ -16,9 +16,10 @@ if (!empty($_GET['id'])) {
     $pp = $data['pp'];
 }
 
+$errors = array();
+
 	//Modification les information des utilisateurs
 if (isset($_POST['submit']) && isset($_GET['id'])) {
-    
     // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
     if (isset($_FILES['mon_pp']) AND $_FILES['mon_pp']['error'] == 0){
         // Testons si le fichier n'est pas trop gros
@@ -26,7 +27,7 @@ if (isset($_POST['submit']) && isset($_GET['id'])) {
             // Testons si l'extension est autorisée
             $infosfichier = pathinfo($_FILES['mon_pp']['name']);
             $extension_upload = $infosfichier['extension'];
-            $extensions_autorisees = array('jpg', 'JPG', 'jpeg', 'JPEG', 'gif', 'GIF', 'png', 'PNG');
+            $extensions_autorisees = array('jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG');
             if (in_array($extension_upload, $extensions_autorisees)){
                 // On peut valider le fichier et le stocker définitivement
                 move_uploaded_file($_FILES['mon_pp']['tmp_name'], 'img/profils/' .
@@ -42,10 +43,10 @@ if (isset($_POST['submit']) && isset($_GET['id'])) {
                 ");
                 $updatePP->execute(array($pp, $id));
             }else{
-                echo 'Veuillez choisir un fichier image';
+                $errors [] = "Veuillez choisir un fichier image";
             }
         }else{
-            echo 'Veuillez choisir un fichier de taille inferieure ou égale à 1Mo.';
+            $errors [] = "Veuillez choisir un fichier de taille inferieure ou égale à 1Mo.";
         }
     }
 	
@@ -53,18 +54,8 @@ if (isset($_POST['submit']) && isset($_GET['id'])) {
 		
 		extract($_POST);
 
-		$errors = array();
-        
         if (mb_strlen($pseudo) < 3) {
             $errors [] = "Pseudo trop court (Minimum 3 caractères)";
-        }
-
-        if(is_already_in_use('pseudo',$pseudo,'utilisateur')){
-            $errors[] = "Pseudo déja utilisé";
-        }
-
-        if(is_already_in_use('email',$email,'utilisateur') && $email != null){
-            $errors[] = "Adresse email déja utilise";
         }
 
         //S'il n'y a aucune erreur 
@@ -84,7 +75,7 @@ if (isset($_POST['submit']) && isset($_GET['id'])) {
 			$_SESSION['success'] = $success;
 			
             //Redirection vers la page admin
-			header('Location: profil.php, id'.$id);
+			header('Location: profil.php?id='.$id);
 		}else{
 				// save_input_data();
 		}	

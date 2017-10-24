@@ -1,6 +1,6 @@
 
 <footer id="footer" style="background-color:white;">
-  <div class="container"> 
+  <div class="">
     <div class="row">
 
         <!-- Nos partenaires -->
@@ -9,7 +9,6 @@
         <a href="#"><img class="img-respnsive" src="img/WAZI_UP_logo.png" alt="WAZIUP"></a>
         <a href="#"><img class="img-respnsive" src="img/archi.PNG" alt="archi"></a>
         <a href="#"><img class="img-respnsive" src="img/ispace.PNG" alt="ispace"></a>
-        <a href="#"><img class="img-respnsive" src="img/global-market.PNG" alt="global-market"></a>
         <a href="#"><img class="img-respnsive" src="img/innotec.PNG" alt="innotec"></a>
       </div>
 

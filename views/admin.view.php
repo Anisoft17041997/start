@@ -16,12 +16,8 @@
 </nav>
 
 <!-- Main -->
-
-<div class="container">
+<section>
     <div class="row">
-        <!-- Article main content -->
-        <!-- <article class="col-xs-12 maincontent">
-        -->
         <header id="header">
             <div class="container">
                 <div class="row">
@@ -72,8 +68,9 @@
                                     <h3 class="panel-title text-uppercase">Liste des utilsateurs <a href="#" data-toggle="modal" data-target="#myModalUser" class="btn btn-scope btn-xs pull-right">Nouvel utilisateur</a></h3>
                                 </div>
                                 <div class="panel-body">
-                                    <table class="table table-striped table-hover">
+                                    <table class="table table-striped table-condensed table-hover table-responsive">
                                         <tr>
+                                            <th></th>
                                             <th>U_num</th>
                                             <th>Nom et Prenom(s)</th>
                                             <th>Email</th>
@@ -81,18 +78,20 @@
                                             <th>Sexe</th>
                                             <th>Quartier</th>
                                             <th>Nombre de kits</th>
+                                            <th></th>
                                             <th class="text-center">CRUD</th>
                                         </tr>
                                         <?php while ($data = $query->fetch()) { ?>
                                             <tr>
+                                                <td><img class="img-responsive img-circle img-profil" src="img/profils/<?=$data['pp']?>" alt="Profil" title=""></td>
                                                 <td><?=$data['U_num'] ?></td>
-                                                <td><?=$data['nom'] ?>&nbsp;<?=$data['prenom'] ?></td>
+                                                <td><?=$data['nom']?>&nbsp;<?=$data['prenom'] ?></td>
                                                 <td><?=$data['email'] ?></td>
                                                 <td><?=$data['telephone'] ?></td>
                                                 <td><?=$data['sexe'] ?></td>
                                                 <td><?=$data['quartier'] ?></td>
-                                                <td class=""><?=$data['nb_kit'] ?><a href="admin.php?id=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" >&nbsp;<span class="btn btn-scope glyphicon glyphicon-plus pull-right"></span></a>
-                                                </td>
+                                                <td class=""><?=$data['nb_kit'] ?></td>
+                                                <td><a href="admin.php?id=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" ><span class="btn btn-scope glyphicon glyphicon-plus pull-right"></span></a></td>
                                                 <td class="text-center">
                                                     <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
                                                     <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
@@ -111,8 +110,9 @@
                                     <h3 class="panel-title text-uppercase" >Liste des abonnés <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-scope btn-xs pull-right">Nouvel abonné</a></h3>
                                 </div>
                                 <div class="panel-body">
-                                    <table class="table table-striped table-hover">
+                                    <table class="table table-striped table-condensed table-hover table-responsive">
                                         <tr>
+                                            <th></th>
                                             <th>Pseudo</th>
                                             <th>Email</th>
                                             <th>Téléphone</th>
@@ -120,6 +120,7 @@
                                         </tr>
                                         <?php while ($data = $abonne->fetch()) { ?>
                                             <tr>
+                                                <td><img class="img-responsive img-circle img-thumbnail img-profil" src="img/profils/<?=$data['pp']?>" alt="Profil" title=""></td>
                                                 <td><?=$data['pseudo'] ?></td>
                                                 <td><?=$data['email'] ?></td>
                                                 <td><?=$data['telephone'] ?></td>
@@ -170,9 +171,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <div class="form-group col-sm-2 col-xs-2">
-                                                <button type="submit" class="btn btn-primary" name="submit">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-                                            </div>
+                                            <button type="submit" class="btn btn-scope" name="submit">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -231,9 +230,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <div class="form-group col-sm-2 col-xs-2">
-                                                <button type="submit" class="btn btn-primary" name="submitUser">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-                                            </div>
+                                            <button type="submit" class="btn btn-scope" name="submitUser">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -246,5 +243,5 @@
 
         <?php include 'partials/_footer_2.php'; ?>
     </div>
-</div>
+</section>
 </body>

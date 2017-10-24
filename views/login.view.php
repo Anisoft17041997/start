@@ -24,8 +24,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <div class="form-group col-sm-2 col-xs-2">
-                <button type="submit" class="btn btn-primary" name="connect">Connecter<span class="glyphicon glyphicon-log-in"></span></button>
+              <div class="form-group pull-right">
+                <button type="submit" class="btn btn-scope" name="connect">Connecter&nbsp<icon class="glyphicon glyphicon-log-in"></icon></button>
               </div>
             </div>
           </form>

@@ -28,8 +28,8 @@
                             <label for="adresse">Quartier <span class="text-danger">*</span></label>
                             <input name="quartier" type="text" class="form-control" id="adresse" placeholder="Votre quartier" required="required">
                         </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary" name="devUtil">Enregistrer</button>
+                        <div class="form-group pull-right">
+                            <button type="submit" class="btn btn-scope" name="devUtil">Enregistrer</button>
                         </div>
                     </form>
                 </div>
