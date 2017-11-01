@@ -8,11 +8,13 @@
     <ul>
         <li><a href="a_propos.php">A propos</a></li>
         <li><a href="news.php">News</a></li>
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Jouer</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#notAv">Forum</a></li>
         <li><a href="blog.php">Blog</a></li>
     </ul>
 </nav>
+
+<!-- Modal de page invalide -->
+<?php include 'partials/_notAvailable.php'; ?>
 
 <!-- Main -->
 

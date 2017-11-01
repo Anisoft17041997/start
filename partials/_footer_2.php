@@ -1,3 +1,8 @@
+<!--Back button-->
+<a class="dis-no tdn z999 backtotop" style="display:inline;" href="#">
+    <span class="fa fa-angle-double-up text-scope"></span>
+</a>
+<!--Back button End-->
 
 <!-- jQuery -->
 <script src="vendor/jquery/jquery.js"></script>

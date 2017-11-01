@@ -9,11 +9,13 @@
     <ul>
         <li><a href="a_propos.php">A propos</a></li>
         <li><a href="news.php">News</a></li>
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Jouer</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#notAv">Forum</a></li>
         <li><a href="blog.php">Blog</a></li>
     </ul>
 </nav>
+
+<!-- Pour les pages non valides -->
+<?php include 'partials/_notAvailable.php'; ?>
 
 <!-- Main -->
 <section>
@@ -26,7 +28,7 @@
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Mon Tableau <small>de bord</small>
                             <span class="dropdown">
                                 <button class="btn btn-scope pull-right dropdown-toggle" type="button" data-toggle="dropdown">
-                                    <span class="caret"></span></icon>&nbsp;Opérations
+                                    <span class="caret"></span>&nbsp;Opérations
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-left">
                                     <li><a href="#" data-toggle="modal" data-target="#myModalUser">Ajouter un utilisateur</a></li>
@@ -35,6 +37,7 @@
                                     <li><a href="#abonnesList">Liste des abonnés</a></li>
                                     <li><a href="#" data-toggle="modal" data-target="#newsModal">Ajouter un news</a></li>
                                     <li><a href="#newsList">Liste des news</a></li>
+                                    <li><a href="#commentsList">Liste des commentaires</a></li>
                                 </ul>
                             </span>
                         </h1>
@@ -53,6 +56,14 @@
                                 <h3 class="panel-title text-uppercase">Statistiques</h3>
                             </div>
                             <div class="panel-body">
+                                
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="well dash-box">
+                                        <h2><span class="fa fa-street-view text-success" aria-hidden="true"></span> <?php echo $nb_v ?> </h2>
+                                        <h4><?php if($nb_v <= 1){echo 'Visiteur';}else{echo 'Visiteurs';} ?></h4>
+                                    </div>
+                                </div>
+                                
                                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                     <div class="well dash-box">
                                         <h2><span class="fa fa-user text-success" aria-hidden="true"></span> <?php echo $nb['nombre']; ?></h2>
@@ -73,6 +84,21 @@
                                         <h4>Kits totals levés</h4>
                                     </div>
                                 </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="well dash-box">
+                                        <h2><span class="fa fa-newspaper-o text-success" aria-hidden="true"></span> <?php echo $nb_news['nombre']; ?> </h2>
+                                        <h4>News</h4>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="well dash-box">
+                                        <h2><span class="fa fa-comments-o text-success" aria-hidden="true"></span> <?php echo $nb_comments['nombre']; ?> </h2>
+                                        <h4>Commentaires</h4>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
 
@@ -109,16 +135,16 @@
                                                 <td class=""><?=$data['nb_kit'] ?></td>
                                                 <td>
                                                     <a href="admin.php?inc=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" >
-                                                        <span class="btn btn-scope glyphicon glyphicon-plus"></span>
+                                                        <span class="btn btn-scope btn-xs glyphicon glyphicon-plus"></span>
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a href="admin.php?dec=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" >
-                                                        <span class="btn btn-warning glyphicon glyphicon-minus"></span>
+                                                        <span class="btn btn-warning btn-xs glyphicon glyphicon-minus"></span>
                                                     </a>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
+                                                    <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>
                                                     <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
                                                 </td>
                                             </tr>
@@ -171,18 +197,41 @@
                                     <tr>
                                         <th></th>
                                         <th>Titre</th>
-                                        <th>Contenu</th>
+                                        <th>Date</th>
                                         <th class="text-center">CRUD</th>
                                     </tr>
                                     <?php while ($data = $news->fetch()) { ?>
                                         <tr>
                                             <td><img class="img-responsive img-circle img-thumbnail img-profil" src="img/news/<?=$data['new_pp']?>" alt="imgae de news" title=""></td>
                                             <td><?=$data['title'] ?></td>
-                                            <td><?=$data['content'] ?></td>
+                                            <td><?=date('d/m/Y à H\hi',$data['timestamp']) ?></td>
                                             <td class="text-center">
                                                 <a href="editNews.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
                                                 <a href="admin.php?del_new=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
                                             </td>
+                                        </tr>
+                                    <?php }?>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- liste des commentaires -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 id="commentsList" class="panel-title text-uppercase" >Liste des commentaires </h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped table-condensed table-hover table-responsive">
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Email</th>
+                                        <th>Commentaire</th>
+                                    </tr>
+                                    <?php while ($data = $comments->fetch()) { ?>
+                                        <tr>
+                                            <td><?=$data['nom'] ?></td>
+                                            <td><?=$data['email'] ?></td>
+                                            <td><?=$data['content'] ?></td>
                                         </tr>
                                     <?php }?>
                                 </table>
@@ -309,7 +358,7 @@
                                     <div class="modal-body">
                                         <div class="top-margin">
                                             <label for="new_pp">Choisir une image <span class="text-danger">*</span></label>
-                                            <input type="file" class="form-control" name="new_pp" id="new_pp" value="<?=$new_pp?>">
+                                            <input type="file" class="" name="new_pp" id="new_pp" value="<?=$new_pp?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="title">Titre du new <span class="text-danger">*</span></label>

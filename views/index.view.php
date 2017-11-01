@@ -8,16 +8,17 @@
     <ul>
         <li><a href="a_propos.php">A propos</a></li>
         <li><a href="news.php">News</a></li>
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Jouer</a></li>
+        <li><a <?php if(check_session()){ ?> href="forum.php" <?php }else{ ?> href="#" data-toggle="modal" data-target="#myModal1" type="submit" name="submit" <?php } ?>>Forum</a></li>
         <li><a href="blog.php">Blog</a></li>
     </ul>
 </nav>
 
-<!-- Modal de page invalide -->
+<!-- Inclusion du modal de connexion -->
+<?php include 'views/login.view.php'; ?>
 
 <!-- Main -->
 <div id="main">
+
     <!--carousel-->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -111,9 +112,9 @@
         </a>
     </div>
 </div>
-<!-- </div> -->
-<?php include 'views/login.view.php'; ?>
+
 <!--Texte concernat SCoPE-->
+
 <div class="row">
     <div class="col-md-6"><hr>
         <p>
@@ -122,7 +123,7 @@
     </div>
     <div class="col-md-6"><hr>
         <p style="text-align:justify;">
-            En vue de sauver, d'assainir l'environnement et apprendre à la population de mieux gérer les déchets plastiques, SCoPE est une entreprise idéale dans le sujet qui propose des services d'un dispositif intelligent qu'elle a mise en place: assainir la ville.Créé et accéléré par la communauté WoeLab, prise en chage par son programme d'incubation, elle fait partie du groupe #SilliconVillage et bénéficie à ce titre de la proximité d'autres startups tech qui la complète idéalement.
+            <strong>En vue de sauver, d'assainir l'environnement et apprendre à la population de mieux gérer les déchets plastiques, SCoPE(<em><strong>S</strong>orting & <strong>C</strong>ollecting <strong>P</strong>lastics in <strong>o</strong>ur <strong>E</strong>nvironment</em>) est une entreprise idéale dans le sujet qui propose des services d'un dispositif intelligent qu'elle a mise en place: assainir la ville.Créé et accéléré par la communauté WoeLab, prise en chage par son programme d'incubation, elle fait partie du groupe #SilliconVillage et bénéficie à ce titre de la proximité d'autres startups tech qui la complète idéalement.</strong>
         </p><hr>
         <button href="../logout.php" data-toggle="modal" data-target="#myModal2" type="submit" class="btn btn-block btn-scope " name="submit"> Devenir utilisateur » </button>
     </div>
@@ -134,10 +135,10 @@
         <!-- Modal -->
         <div class="modal fade" id="myModal2" role="dialog">
             <div class="modal-dialog">
+                <?php include 'partials/_error.php'; ?>
+                <?php include 'partials/_success.php'; ?>
                 <!-- Modal content-->
                 <form method="post" data-parsley-validate autocomplete="off">
-                    <?php include 'partials/_error.php'; ?>
-                    <?php include 'partials/_success.php'; ?>
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">
@@ -177,13 +178,49 @@
 </div>
 
 <!-- la map interactive -->
-<iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/fr/map/carte-des-banques-de-dechets-plastiques-de-lome_135838?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=false&allowEdit=false&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=false&onLoadPanel=undefined&captionBar=false">
+<iframe width="100%" height="400px" frameBorder="0" src="http://umap.openstreetmap.fr/fr/map/carte-des-banques-de-dechets-plastiques-de-lome_135838?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=false&allowEdit=false&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=false&onLoadPanel=undefined&captionBar=false">
 </iframe>
-<!--</div>-->
+<!-- la map interactive End -->
 
-<!-- Footer -->
+<!-- Les commentaires -->
 
-<!-- </div> -->
+    <form method="post" class="comment">
+        <div class="col-md-12">
+            <p class="ttle "> Laisser un commentaire</p>
+            <p>Votre adresse de messagerie ne sera pas publiée. Les champs obligatoires sont indiqués avec <span class="text-danger">*</span></p><br>
+        </div>
+        <div class="col-md-12">
+            <?php include 'partials/_error.php'; ?>
+            <?php include 'partials/_success.php'; ?>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="nom">Nom <span class="text-danger">*</span></label>
+                <input type="text" name="nom" class="form-control"placeholder="Votre nom">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="email">Adresse mail <span class="text-danger">*</span></label>
+                <input type="email" name="email" class="form-control" placeholder="Votre adresse mail">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group"><br>
+                <textarea name="content" type="textarea" class="form-control" id="content" placeholder="Votre commentaire ..." required="required" data-parsley-minlength="10">
+                </textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group"><br>
+                <button type="submit" class="btn btn-scope" name="submit-comment">Envoyer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+            </div>
+        </div>
+    </form>
+
+
+<!-- Les commentaires End -->
+
 <script type="text/javascript">
     va$(function(){
         if("geolocation" in navigator){

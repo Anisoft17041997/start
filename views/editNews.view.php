@@ -9,11 +9,13 @@
     <ul>
         <li><a href="a_propos.php">A propos</a></li>
         <li><a href="news.php">News</a></li>
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Jouer</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#notAv">Forum</a></li>
         <li><a href="blog.php">Blog</a></li>
     </ul>
 </nav>
+
+<!-- Modal de page invalide -->
+<?php include 'partials/_notAvailable.php'; ?>
 
 <!-- container -->
 <div class="container">
@@ -21,12 +23,12 @@
         <!-- Article main content -->
         <article class="col-xs-8 col-xs-offset-2 maincontent">
             <div class="jumbotron">
+                <?php include'partials/_error.php' ?>
+                <?php include'partials/_success.php' ?>
                 <form method="post" action="" enctype="multipart/form-data">
-                    <?php include'partials/_error.php' ?>
-                    <?php include'partials/_success.php' ?>
                     <div class="top-margin">
                         <label for="new_pp">Choisir une image <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" name="new_pp" id="new_pp" value="<?=$new_pp?>">
+                        <input type="file" class="" name="new_pp" id="new_pp" value="<?=$new_pp?>">
                     </div>
                     <div class="form-group">
                         <label for="title">Titre du new <span class="text-danger">*</span></label>

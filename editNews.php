@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+
+include('connectes.php');
 require 'config/database.php';
 require 'includes/fonctions.php';
 

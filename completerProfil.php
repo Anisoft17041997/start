@@ -2,7 +2,7 @@
 
 	require 'config/database.php';
 	
-
+    include('connectes.php');
 	
 
 	if(isset($_POST['submit'])){

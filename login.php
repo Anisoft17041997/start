@@ -1,6 +1,8 @@
 <?php 
+
 	require 'config/database.php';
-	require 'includes/fonctions.php'; 
+	require 'includes/fonctions.php';
+    require 'register.php';
 	
 	/********* CONNEXION  **********/
 	//On verifie si le formulaire a ete soumis

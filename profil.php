@@ -1,5 +1,7 @@
 <?php
 session_start();
+    
+include('connectes.php');
 require 'filters/auth_filter.php';
 require 'config/database.php';
 require 'includes/fonctions.php';

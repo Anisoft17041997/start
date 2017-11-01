@@ -1,5 +1,9 @@
-<?php 
+<?php
+
+    include('connectes.php');
+
 	require 'config/database.php';
+
 	require 'includes/fonctions.php';
 	
 	if (isset($_POST['devUtil'])) {

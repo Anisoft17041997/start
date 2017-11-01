@@ -2,6 +2,8 @@
 
 session_start();
 
+include('connectes.php');
+
 require "includes/fonctions.php";
 
 //détermination du nombre d'utilisateur
@@ -16,6 +18,11 @@ $nb_kit = nb_kit_tot();
 $resultat_news = afficher_news();
 $news = $resultat_news['news'];
 $nb_news = $resultat_news['nb_news'];
+
+//détermination du nombre de commentaires
+$resultat_comments = afficher_comments();
+$comments = $resultat_comments['comments'];
+$nb_comments = $resultat_comments['nb_comments'];
 
 //incrémenter le nombre de kits rempli
 if(isset($_GET['inc']) && isset($_GET['nb_kit'])){
@@ -187,9 +194,9 @@ if (isset($_POST['submitNew'])) {
 
                     if (count($errors) == 0) {
                         $insert = $db->prepare("
-                            INSERT INTO news (new_pp,title,content) 
-                            VALUES (?, ?, ?)");//Parametres nommees
-                        $insert->execute(array($new_pp, $title, $content));
+                            INSERT INTO news (new_pp,title,content,timestamp) 
+                            VALUES (?, ?, ?, ?)");//Parametres nommees
+                        $insert->execute(array($new_pp, $title, $content, time()));
                         //Redirection de l'admin sur sa page d'administration
                         header('Location: admin.php?id=' . get_session('id'));
                     } else {

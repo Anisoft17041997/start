@@ -11,6 +11,7 @@
             if(check_session()){
                 ?>
                 <li style="margin-right:10px;"><a href="logout.php" title="Se déconnecter" class="btn btn-lg"><span style="color:#67cd67;" class="glyphicon glyphicon-user"></span></a></li>
+                <a href="profil.php?id=<?=$_SESSION['id']?>" title="Voir profil"><li style="margin-right:10px; font-family: 'Century Gothic',Century, SansSerif; font-size: small;"><?=$_SESSION['pseudo']?></li></a>
                 <?php
             }else{
                 ?>

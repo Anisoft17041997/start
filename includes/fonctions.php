@@ -217,6 +217,24 @@ if(!function_exists('afficher_news')){
     }
 }
 
+//function pour afficher les news
+if(!function_exists('afficher_comments')){
+    function afficher_comments(){
+        global $db;
+
+        //sélection des news
+        $comments = $db->prepare("SELECT * FROM commentaire");
+        $comments->execute(array());
+
+        //nombre de news
+        $q = $db->prepare("SELECT count(*) nombre FROM commentaire");
+        $q->execute(array());
+        $nb_comments = $q->fetch();
+
+        return array('comments' =>  $comments , 'nb_comments' => $nb_comments);
+    }
+}
+
 //fonction permettant de supprimer un utilisateur
 if(!function_exists('supprimer')){
     function supprimer($key)

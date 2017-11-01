@@ -10,4 +10,3 @@
             <li><a href="#menu" class="glyphicon glyphicon-list">Menu</a></li>
         </ul>
 	</nav>
-</header>

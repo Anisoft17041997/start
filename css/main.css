@@ -77,3 +77,31 @@ h4{
 .img-float{
 	float: left;
 }
+
+.ttle{
+	font-size: 3em;
+	color: #00ffff;
+	font-weight: 100;
+}
+
+.comment{
+	background-color: #FFFFFF;
+}
+
+.news{
+	background-color: #FFFFFF;
+}
+
+.backtotop {
+	margin: auto 1px;
+	bottom: 14px;
+	bottom: 1rem;
+	font-size: 35px;
+	position: fixed;
+	right: 14px;
+	right: 1rem;
+}
+
+.text-scope{
+	color: #00ffff;
+}

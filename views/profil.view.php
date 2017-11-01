@@ -35,13 +35,13 @@
     <div class="container">
         <!-- Logo -->
         <a href="index.php" class="logo">
-            <img src="scope.png" alt="" />
+            <img src="img/scope.png" alt="logo de scope" />
         </a>
-
         <!-- Nav -->
         <nav>
             <ul>
-                <li style="margin-right:10px;"><a href="logout.php" class="btn btn-lg"><span style="color:#67cd67;" class="glyphicon glyphicon-user"></span></a></li>
+                <li title="Se déconnecter" style="margin-right:10px;"><a href="logout.php" class="btn btn-lg"><span style="color:#67cd67;" class="glyphicon glyphicon-user"></span></a></li>
+                <li style="margin-right:10px; font-family: 'Century Gothic',Century, SansSerif; font-size: small;"><?=$_SESSION['pseudo']?></li>
                 <li><a href="#menu">Menu</a></li>
             </ul>
         </nav>
@@ -54,16 +54,18 @@
     <ul>
         <li><a href="a_propos.php">A propos</a></li>
         <li><a href="news.php">News</a></li>
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Jouer</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#notAv">Forum</a></li>
         <li><a href="blog.php">Blog</a></li>
     </ul>
 </nav>
 
+<!-- Modal de page invalide -->
+<?php include 'partials/_notAvailable.php'; ?>
+
 <!-- Modal pour profil -->
 <div>
     <!-- Panels -->
-    <?php  require 'includes/fonctions.php'; ?>
+
     <?php if(!not_empty(['nom', 'prenom', 'sexe', 'quartier']) && !isUser()): ?>
         <div class="row">
         <div class="col-md-6 col-xs-12">
@@ -205,5 +207,6 @@
     <!-- Localisation -->
     <!-- <iframe width="100%" height="300px" frameBorder="0" src="https://framacarte.org/fr/map/carte-scope_9435?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="https://framacarte.org/fr/map/carte-scope_9435">Voir en plein écran</a></p> -->
 </div>
+
 </body>
 </html>

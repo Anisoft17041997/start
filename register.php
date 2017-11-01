@@ -1,5 +1,7 @@
 <?php 
+
 	require 'config/database.php';
+
 	require 'includes/fonctions.php';
 
 
@@ -37,7 +39,10 @@
 			if(count($errors) == 0){
 				$query = $db->prepare("INSERT INTO utilisateur (pseudo,mdp,email,telephone) VALUES (?, ?, ?, ?)");//Parametres nommees
 				$query->execute(array($pseudo, sha1($pass), $email, $tel));
-				
+
+				//message de succes
+                set_flash("Enregistrement effectué avec succès !", 'success');
+
 				header('Location: index.php');
 			}else{
 				save_input_data();
@@ -50,4 +55,39 @@
 		}
 	
 	}
+
+	//insertion de commentaire
+    if (isset($_POST['submit-comment'])) {
+
+    if(not_empty(['nom', 'email', 'content'])){
+
+        extract($_POST);
+
+        $errors = [];
+        secure(['nom', 'email']);
+
+        if (mb_strlen($nom) < 3) {
+            $errors [] = "Nom trop court (Minimum 3 caractères)";
+        }
+
+        if(count($errors) == 0){
+            $query = $db->prepare("INSERT INTO commentaire (nom,email,content) VALUES (?, ?, ?)");//Parametres nommees
+            $query->execute(array($nom, $email, $content));
+
+            //message de succes
+            set_flash("Commentaire envoyé avec succès !", 'success');
+
+            header('Location: index.php');
+        }else{
+            save_input_data();
+            //ramener le modale
+        }
+    }else{
+        save_input_data();
+        $errors [] = "Veuillez renseigner tous les champs";
+        //ramener le modale
+    }
+
+}
+
  ?>
