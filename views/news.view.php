@@ -16,7 +16,15 @@
 
 <section>
 
-<!--    listes des news-->
+<!-- listes des news -->
+    <?php while ($data = $news->fetch()) { ?>
+        <div class="col-md-offset-1 col-md-10">
+            <blockquote ><?=$data['title']?></blockquote><hr>
+            <div class="row">
+                <div class="col-md-12"><img class="img-responsive img-thumbnail img-new img-float" src="img/news/<?=$data['new_pp']?>"><p class="text-justify"><?=$data['content']?></p></div>
+            </div><br><br>
+        </div>
+<?php }?>
 
 </section>
 

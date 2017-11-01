@@ -22,7 +22,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Mon Tableau <small>de bord</small><a href="#" class="btn btn-scope pull-right"><icon class="glyphicon glyphicon-registration-mark"></icon> &nbsp; Opérations</a></h1>
+                        <h1>
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Mon Tableau <small>de bord</small>
+                            <span class="dropdown">
+                                <button class="btn btn-scope pull-right dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <span class="caret"></span></icon>&nbsp;Opérations
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-left">
+                                    <li><a href="#" data-toggle="modal" data-target="#myModalUser">Ajouter un utilisateur</a></li>
+                                    <li><a href="#usersList">Liste des utilisateus</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#myModal">Ajouter un abonné</a></li>
+                                    <li><a href="#abonnesList">Liste des abonnés</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#newsModal">Ajouter un news</a></li>
+                                    <li><a href="#newsList">Liste des news</a></li>
+                                </ul>
+                            </span>
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -65,7 +80,7 @@
                         <div class="panel-group panel-responsive">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title text-uppercase">Liste des utilsateurs <a href="#" data-toggle="modal" data-target="#myModalUser" class="btn btn-scope btn-xs pull-right">Nouvel utilisateur</a></h3>
+                                    <h3 id="usersList" class="panel-title text-uppercase">Liste des utilsateurs <a href="#" data-toggle="modal" data-target="#myModalUser" class="btn btn-scope btn-xs pull-right">Nouvel utilisateur</a></h3>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table table-striped table-condensed table-hover table-responsive">
@@ -77,7 +92,8 @@
                                             <th>Téléphone</th>
                                             <th>Sexe</th>
                                             <th>Quartier</th>
-                                            <th>Nombre de kits</th>
+                                            <th>Nb kits</th>
+                                            <th></th>
                                             <th></th>
                                             <th class="text-center">CRUD</th>
                                         </tr>
@@ -91,7 +107,16 @@
                                                 <td><?=$data['sexe'] ?></td>
                                                 <td><?=$data['quartier'] ?></td>
                                                 <td class=""><?=$data['nb_kit'] ?></td>
-                                                <td><a href="admin.php?id=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" ><span class="btn btn-scope glyphicon glyphicon-plus pull-right"></span></a></td>
+                                                <td>
+                                                    <a href="admin.php?inc=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" >
+                                                        <span class="btn btn-scope glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="admin.php?dec=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" >
+                                                        <span class="btn btn-warning glyphicon glyphicon-minus"></span>
+                                                    </a>
+                                                </td>
                                                 <td class="text-center">
                                                     <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
                                                     <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
@@ -107,7 +132,7 @@
                             <!-- liste des abonnés -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title text-uppercase" >Liste des abonnés <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-scope btn-xs pull-right">Nouvel abonné</a></h3>
+                                    <h3 id="abonnesList" class="panel-title text-uppercase" >Liste des abonnés <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-scope btn-xs pull-right">Nouvel abonné</a></h3>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table table-striped table-condensed table-hover table-responsive">
@@ -136,112 +161,180 @@
 
                         </div>
 
-                        <!-- Modal ajout d'un abonné -->
-                        <form method="post" data-parsley-validate autocomplete="off">
-                            <?php include'partials/_error.php' ?>
-                            <?php include'partials/_success.php' ?>
-                            <div id="myModal" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title"><span type="button" class="close" data-dismiss="modal">&times;</span>Ajouter un abonné</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label for="pseudo">Pseudo <span class="text-danger">*</span></label>
-                                                <input name="pseudo" type="text" class="form-control" id="email" placeholder="Nom d'utilisateur" required="required" data-parsley-minlength="5">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="pwd">Mot de passe <span class="text-danger">*</span></label>
-                                                <input name="pass" type="password" class="form-control" id="pwd" placeholder="Mot de passe" required="required" data-parsley-minlength="6">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cpwd">Confirmation <span class="text-danger">*</span></label>
-                                                <input name="cpass" type="password" class="form-control" id="cpwd" placeholder="Confirmer votre mot de passe" required="required" >
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input name="email" type="email" class="form-control" id="email" placeholder="Email" data-parsley-type="email" data-parsley-trigger="change">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="tel">Téléphone <span class="text-danger">*</span></label>
-                                                <input name="tel" type="tel" class="form-control" id="tel" placeholder="Téléphone" required="required" maxlength="8" data-parsley-type="number">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-scope" name="submit">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- liste des news -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 id="newsList" class="panel-title text-uppercase" >Liste des news <a href="#" data-toggle="modal" data-target="#newsModal" class="btn btn-scope btn-xs pull-right">Nouveau news</a></h3>
                             </div>
-                        </form>
-
-                        <!-- Modal ajout d'un utilisateur -->
-                        <form method="post" data-parsley-validate autocomplete="off">
-                            <div id="myModalUser" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title"><span type="button" class="close" data-dismiss="modal">&times;</span>Ajouter un utilisateur</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label for="name">Nom <span class="text-danger">*</span></label>
-                                                <input name="nom" type="text" class="form-control" id="name" placeholder="Votre nom" required="required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="firstname">Prénom <span class="text-danger">*</span></label>
-                                                <input name="prenom" type="text" class="form-control" id="firstname" placeholder="Votre prénom" required="required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="sexe">Sexe</label>
-                                                <select class="form-control" name="sexe" id="sexe">
-                                                    <option value="Homme" selected="selected">Homme</option>
-                                                    <option value="Femme">Femme</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="pseudo">Pseudo <span class="text-danger">*</span></label>
-                                                <input name="pseudo" type="text" class="form-control" id="email" placeholder="Nom d'utilisateur" required="required" data-parsley-minlength="5">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="pwd">Mot de passe <span class="text-danger">*</span></label>
-                                                <input name="pass" type="password" class="form-control" id="pwd" placeholder="Mot de passe" required="required" data-parsley-minlength="6">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cpwd">Confirmation <span class="text-danger">*</span></label>
-                                                <input name="cpass" type="password" class="form-control" id="cpwd" placeholder="Confirmer votre mot de passe" required="required" >
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input name="email" type="email" class="form-control" id="email" placeholder="Email" data-parsley-type="email" data-parsley-trigger="change">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="tel">Téléphone <span class="text-danger">*</span></label>
-                                                <input name="tel" type="tel" class="form-control" id="tel" placeholder="Téléphone" required="required" maxlength="8" data-parsley-type="number">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="adresse">Quartier <span class="text-danger">*</span></label>
-                                                <input name="quartier" type="text" class="form-control" id="adresse" placeholder="Votre quartier" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-scope" name="submitUser">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="panel-body">
+                                <table class="table table-striped table-condensed table-hover table-responsive">
+                                    <tr>
+                                        <th></th>
+                                        <th>Titre</th>
+                                        <th>Contenu</th>
+                                        <th class="text-center">CRUD</th>
+                                    </tr>
+                                    <?php while ($data = $news->fetch()) { ?>
+                                        <tr>
+                                            <td><img class="img-responsive img-circle img-thumbnail img-profil" src="img/news/<?=$data['new_pp']?>" alt="imgae de news" title=""></td>
+                                            <td><?=$data['title'] ?></td>
+                                            <td><?=$data['content'] ?></td>
+                                            <td class="text-center">
+                                                <a href="editNews.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>&nbsp;
+                                                <a href="admin.php?del_new=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
+                                            </td>
+                                        </tr>
+                                    <?php }?>
+                                </table>
                             </div>
-                        </form>
+                        </div>
+
                     </div>
+
+                    <!-- Modal ajout d'un abonné -->
+                    <form method="post" data-parsley-validate autocomplete="off">
+                        <?php include'partials/_error.php' ?>
+                        <?php include'partials/_success.php' ?>
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"><span type="button" class="close" data-dismiss="modal">&times;</span>Ajouter un abonné</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="pseudo">Pseudo <span class="text-danger">*</span></label>
+                                            <input name="pseudo" type="text" class="form-control" id="email" placeholder="Nom d'utilisateur" required="required" data-parsley-minlength="5">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pwd">Mot de passe <span class="text-danger">*</span></label>
+                                            <input name="pass" type="password" class="form-control" id="pwd" placeholder="Mot de passe" required="required" data-parsley-minlength="6">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cpwd">Confirmation <span class="text-danger">*</span></label>
+                                            <input name="cpass" type="password" class="form-control" id="cpwd" placeholder="Confirmer votre mot de passe" required="required" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input name="email" type="email" class="form-control" id="email" placeholder="Email" data-parsley-type="email" data-parsley-trigger="change">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tel">Téléphone <span class="text-danger">*</span></label>
+                                            <input name="tel" type="tel" class="form-control" id="tel" placeholder="Téléphone" required="required" maxlength="8" data-parsley-type="number">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-scope" name="submit">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Modal ajout d'un utilisateur -->
+                    <form method="post" data-parsley-validate autocomplete="off">
+                        <?php include'partials/_error.php' ?>
+                        <?php include'partials/_success.php' ?>
+                        <div id="myModalUser" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"><span type="button" class="close" data-dismiss="modal">&times;</span>Ajouter un utilisateur</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="name">Nom <span class="text-danger">*</span></label>
+                                            <input name="nom" type="text" class="form-control" id="name" placeholder="Votre nom" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="firstname">Prénom <span class="text-danger">*</span></label>
+                                            <input name="prenom" type="text" class="form-control" id="firstname" placeholder="Votre prénom" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sexe">Sexe</label>
+                                            <select class="form-control" name="sexe" id="sexe">
+                                                <option value="Homme" selected="selected">Homme</option>
+                                                <option value="Femme">Femme</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pseudo">Pseudo <span class="text-danger">*</span></label>
+                                            <input name="pseudo" type="text" class="form-control" id="email" placeholder="Nom d'utilisateur" required="required" data-parsley-minlength="5">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pwd">Mot de passe <span class="text-danger">*</span></label>
+                                            <input name="pass" type="password" class="form-control" id="pwd" placeholder="Mot de passe" required="required" data-parsley-minlength="6">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cpwd">Confirmation <span class="text-danger">*</span></label>
+                                            <input name="cpass" type="password" class="form-control" id="cpwd" placeholder="Confirmer votre mot de passe" required="required" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input name="email" type="email" class="form-control" id="email" placeholder="Email" data-parsley-type="email" data-parsley-trigger="change">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tel">Téléphone <span class="text-danger">*</span></label>
+                                            <input name="tel" type="tel" class="form-control" id="tel" placeholder="Téléphone" required="required" maxlength="8" data-parsley-type="number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="adresse">Quartier <span class="text-danger">*</span></label>
+                                            <input name="quartier" type="text" class="form-control" id="adresse" placeholder="Votre quartier" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-scope" name="submitUser">Enregistrer&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Modal d'ajout de news -->
+                    <form method="post" action="" data-parsley-validate enctype="multipart/form-data" autocomplete="off">
+                        <?php include'partials/_error.php' ?>
+                        <?php include'partials/_success.php' ?>
+                        <div id="newsModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"><span type="button" class="close" data-dismiss="modal">&times;</span>Publier un news</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="top-margin">
+                                            <label for="new_pp">Choisir une image <span class="text-danger">*</span></label>
+                                            <input type="file" class="form-control" name="new_pp" id="new_pp" value="<?=$new_pp?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="title">Titre du new <span class="text-danger">*</span></label>
+                                            <input name="title" type="text" class="form-control" id="title" placeholder="Titre du new" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="content">Contenu du new <span class="text-danger">*</span></label>
+                                            <textarea name="content" type="textarea" class="form-control" id="content" placeholder="Veuillez saisir le contenu" required="required" data-parsley-minlength="5">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-scope" name="submitNew">Publier&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
-        </section>
-
-        <?php include 'partials/_footer_2.php'; ?>
     </div>
+</section>
+
+<?php include 'partials/_footer_2.php'; ?>
+</div>
 </section>
 </body>
