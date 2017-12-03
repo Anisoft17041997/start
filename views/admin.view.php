@@ -33,6 +33,7 @@
                                 <ul class="dropdown-menu dropdown-menu-left">
                                     <li><a href="#" data-toggle="modal" data-target="#myModalUser">Ajouter un utilisateur</a></li>
                                     <li><a href="#usersList">Liste des utilisateus</a></li>
+                                    <li><a href="#waitUsersList">Liste des utilisateus en attente</a></li>
                                     <li><a href="#" data-toggle="modal" data-target="#myModal">Ajouter un abonné</a></li>
                                     <li><a href="#abonnesList">Liste des abonnés</a></li>
                                     <li><a href="#" data-toggle="modal" data-target="#newsModal">Ajouter un news</a></li>
@@ -73,6 +74,13 @@
 
                                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                     <div class="well dash-box">
+                                        <h2><span class="fa fa-user text-success" aria-hidden="true"></span> <?php if($nb_attentes['nombre'] == 0){echo 0;}else{echo $nb_attentes['nombre']; }?></h2>
+                                        <h4> U-attentes</h4>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="well dash-box">
                                         <h2><span class="fa fa-user-o" aria-hidden="true"></span> <?php echo $nb_ab['nombre_ab']; ?></h2>
                                         <h4> Abonnés</h4>
                                     </div>
@@ -102,7 +110,7 @@
                             </div>
                         </div>
 
-                        <!-- Latest Users -->
+                        <!-- Les listes -->
                         <div class="panel-group panel-responsive">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -114,7 +122,6 @@
                                             <th></th>
                                             <th>U_num</th>
                                             <th>Nom et Prenom(s)</th>
-                                            <th>Email</th>
                                             <th>Téléphone</th>
                                             <th>Sexe</th>
                                             <th>Quartier</th>
@@ -128,7 +135,6 @@
                                                 <td><img class="img-responsive img-circle img-profil" src="img/profils/<?=$data['pp']?>" alt="Profil" title=""></td>
                                                 <td><?=$data['U_num'] ?></td>
                                                 <td><?=$data['nom']?>&nbsp;<?=$data['prenom'] ?></td>
-                                                <td><?=$data['email'] ?></td>
                                                 <td><?=$data['telephone'] ?></td>
                                                 <td><?=$data['sexe'] ?></td>
                                                 <td><?=$data['quartier'] ?></td>
@@ -153,7 +159,53 @@
                                 </div>
                             </div>
 
-                            <?php include 'partials/_error.php'; ?>
+                            <!-- Liste des utilisateurs en attentes-->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 id="waitUsersList" class="panel-title text-uppercase">Liste des utilisateurs en attente<a href="#" data-toggle="modal" data-target="#myModalUser" class="btn btn-scope btn-xs pull-right">Nouvel utilisateur</a></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-striped table-condensed table-hover table-responsive">
+                                        <tr>
+                                            <th></th>
+                                            <th>U_num</th>
+                                            <th>Nom et Prenom(s)</th>
+                                            <th>Téléphone</th>
+                                            <th>Sexe</th>
+                                            <th>Quartier</th>
+                                            <th>Nb kits</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th class="text-center">CRUD</th>
+                                        </tr>
+                                        <?php while ($data = $attentes->fetch()) { ?>
+                                            <tr>
+                                                <td><img class="img-responsive img-circle img-profil" src="img/profils/<?=$data['pp']?>" alt="Profil" title=""></td>
+                                                <td><?=$data['U_num'] ?></td>
+                                                <td><?=$data['nom']?>&nbsp;<?=$data['prenom'] ?></td>
+                                                <td><?=$data['telephone'] ?></td>
+                                                <td><?=$data['sexe'] ?></td>
+                                                <td><?=$data['quartier'] ?></td>
+                                                <td class=""><?=$data['nb_kit'] ?></td>
+                                                <td>
+                                                    <a href="admin.php?inc=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" >
+                                                        <span class="btn btn-scope btn-xs glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="admin.php?dec=<?=$data['id']?>&nb_kit=<?=$data['nb_kit']?>" >
+                                                        <span class="btn btn-warning btn-xs glyphicon glyphicon-minus"></span>
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="modifier.php?id=<?=$data['id']?>" ><span class="fa fa-cog text-success"></span></a>
+                                                    <a href="admin.php?del=<?=$data['id']?>"><span class="fa fa-trash-o fa-lg text-danger"></span></a>
+                                                </td>
+                                            </tr>
+                                        <?php }?>
+                                    </table>
+                                </div>
+                            </div>
 
                             <!-- liste des abonnés -->
                             <div class="panel panel-default">

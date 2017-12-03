@@ -175,19 +175,35 @@ if(!function_exists('afficher_users')){
         global $db;
 
         //sélection des utilisateurs
-        $query = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? ORDER BY U_num");
-        $val = '1';
-        $query->execute(array($val));
+        $query = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? AND U_num <> ? ORDER BY U_num");
+        $val1 = '1';
+        $val2 = 'U_n';
+        $query->execute(array($val1, $val2));
+
+        //sélection des utilisateurs en attente d'U_num
+        $attentes = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? AND U_num = ? ORDER BY U_num");
+        $val1 = '1';
+        $val2 = 'U_n';
+        $attentes->execute(array($val1, $val2));
+
         //sélection des abonnes
         $abonne = $db->prepare("SELECT * FROM utilisateur WHERE isUser=? ORDER BY nom");
         $val = '0';
         $abonne->execute(array($val));
 
         //nombre d'utilisateurs
-        $q = $db->prepare("SELECT count(*) nombre FROM utilisateur WHERE isUser=?");
+        $q = $db->prepare("SELECT count(*) nombre FROM utilisateur WHERE isUser=? AND U_num <> ?");
         $val = '1';
-        $q->execute(array($val));
+        $val2 = 'U_n';
+        $q->execute(array($val, $val2));
         $nb = $q->fetch();
+
+        //nombre d'utilisateurs en attente de U_num
+        $q = $db->prepare("SELECT count(*) nombre FROM utilisateur WHERE isUser=? AND U_num = ?");
+        $val = '1';
+        $val2 = 'U_n';
+        $q->execute(array($val, $val2));
+        $nb_attentes = $q->fetch();
 
         //nombre d'abonnés
         $q_ab = $db->prepare("SELECT count(*) nombre_ab FROM utilisateur WHERE isUser=?");
@@ -195,7 +211,7 @@ if(!function_exists('afficher_users')){
         $q_ab->execute(array($val));
         $nb_ab = $q_ab->fetch();
 
-        return array('query' =>  $query,'abonne' =>  $abonne , 'nb' => $nb, 'nb_ab' => $nb_ab);
+        return array('query' =>  $query, 'attentes' =>  $attentes, 'abonne' =>  $abonne , 'nb' => $nb, 'nb_attentes' => $nb_attentes, 'nb_ab' => $nb_ab);
     }
 }
 

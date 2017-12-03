@@ -9,8 +9,10 @@ require "includes/fonctions.php";
 //détermination du nombre d'utilisateur
 $resultat = afficher_users();
 $query = $resultat['query'];
+$attentes = $resultat['attentes'];
 $abonne = $resultat['abonne'];
 $nb = $resultat['nb'];
+$nb_attentes = $resultat['nb_attentes'];
 $nb_ab = $resultat['nb_ab'];
 $nb_kit = nb_kit_tot();
 
